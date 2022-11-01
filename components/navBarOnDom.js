@@ -1,19 +1,19 @@
 export const navBarOnDom = `<nav class="navbar navbar-expand-lg bg-light">
 <div class="container-fluid">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="index.html">Overview</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link active" aria-current="page" href="./pages/repos.html">Repositories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="./pages/projects.html">Projects</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="./pages/packages.html">Packages</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled">Disabled</a>
