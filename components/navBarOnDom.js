@@ -7,16 +7,13 @@ export const navBarOnDom = `<nav class="navbar navbar-expand-lg bg-light">
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="./pages/repos.html">Repositories</a>
+        <a class="nav-link active" aria-current="page" href="repos.html">Repositories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/projects.html">Projects</a>
+        <a class="nav-link" href="projects.html">Projects</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/packages.html">Packages</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link" href="packages.html">Packages</a>
       </li>
     </ul>
   </div>
