@@ -1,9 +1,13 @@
+// Arrays
 import { reposArr } from "../data/arrays.js";
 import { projectsArr } from "../data/arrays.js";
 import { packagesArr } from "../data/arrays.js";
-
+// Functions
 import { renderToDom } from "../utils/renderToDom.js";
+// Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
+import { footerOnDom } from "../components/footerOnDom.js";
+import { profileOnDom } from "../components/profileOnDom.js";
 
 // querySelectors
 const navBar = document.querySelector("#navBar");
@@ -25,7 +29,7 @@ const navRepos = () => {
   let cardString = "cardddddds";
   let formString = "form";
   renderToDom("#cardContainer", cardString);
-  renderToDom("#formContainer", formString); 
+  renderToDom("#formContainer", formString);
 }
 
 const navProjects = () => {
@@ -63,6 +67,9 @@ navBar.addEventListener("click", navigate);
 
 const startApp = () => {
   renderToDom("#navBar", navBarOnDom);
+  renderToDom("#profileDiv", profileOnDom);
+  renderToDom('#pageFooter', footerOnDom);
+  graham();
 };
 
 startApp();
