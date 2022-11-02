@@ -24,17 +24,37 @@ const graham = () => {
   renderToDom("#cardContainer", cardString);
   renderToDom("#formContainer", formString);
 };
-
+// Eric
 const navRepos = () => {
-  let cardString = "cardddddds";
+  let cardString = `
+  <div class="repos-page-container" id="reposPageContainer">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  </div>`;
   let formString = "form";
+  for (const obj of reposArr) {
+    cardString += `
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">${obj.name}</h5>
+          <p class="card-text">${obj.description}</p>
+          <p class="card-text"><small class="text-muted">${obj.type}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`
+  }
   renderToDom("#cardContainer", cardString);
   renderToDom("#formContainer", formString);
 }
 
 const navProjects = () => {
-  let cardString = "cards";
   let formString = "forrrrrrm";
+  let cardString = "cards";
   renderToDom("#cardContainer", cardString);
   renderToDom("#formContainer", formString);
 }
