@@ -19,10 +19,6 @@
   padding: 11px;
 }
 
-/* .page-footer {
-  margin-top: -75px;
-} */
-
 .navbar-footer {
   display: flex;
   justify-content: center;
@@ -38,19 +34,11 @@
   display: flex;
 }
 
-/* Repo Page Styles */
+/* Repo Page Styles ---- elf */
 .red-star {
   color: red;
 }
 
-/* .card-div-container {
-  height: 200px;
-} */
-
 .form-div-container {
   margin-bottom: 50px;
-}
-
-.repo-input-description {
-  height: 100px;
 }

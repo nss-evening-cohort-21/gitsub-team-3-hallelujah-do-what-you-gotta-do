@@ -65,19 +65,52 @@ const repoFormStrOnDom = () => {
         <label for="repoPageInputDescription">Description</label>
         <input type="text" class="form-control repo-input-description" id="repoPageInputDescription" placeholder="" >
       </div>
+      <div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkJs" value="">
+          <label class="form-check-label" for="checkJs">JS</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkHtml" value="">
+          <label class="form-check-label" for="checkHtml">HTML</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkCss" value="">
+          <label class="form-check-label" for="checkCss">CSS</label>
+        </div>
+      </div>
       <button type="submit" class="btn btn-outline-secondary btn-sm" id="repoPageFormBtn">Create repository</button>
     </form>
   </div>`;
   renderToDom("#formContainer", formString);
 }
+const langArrConstructor = () => {
+  const langArr = [];
+  if (document.querySelector('#checkJs').checked) {
+    langArr.push('js');
+  }
+  if (document.querySelector('#checkHtml').checked) {
+    langArr.push('html');
+  }
+  if (document.querySelector('#checkCss').checked) {
+    langArr.push('css');
+  }
+  return langArr;
+}
 const addRepo = (e) => {
   e.preventDefault();
-  const inputVal = document.querySelector('#repoPageInputName');
-  console.log(inputVal.value);
-  console.log('Poop');
+  const newRepo = {
+    id: reposArr.length + 1,
+    name: document.querySelector('#repoPageInputName').value,
+    pinned: false,
+    favorite: false,
+    description: document.querySelector('#repoPageInputDescription').value,
+    type: langArrConstructor()
+  }
+  reposArr.push(newRepo);
+  repoCardStrOnDom();
   repoPageForm.reset();
 }
-
 const navRepos = () => {
   repoCardStrOnDom();
   repoFormStrOnDom();
