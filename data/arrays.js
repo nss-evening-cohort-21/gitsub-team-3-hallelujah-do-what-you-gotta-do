@@ -1,4 +1,4 @@
-const reposArr = [
+export const reposArr = [
   {
     id: 1,
     name: 'Sorting Hat',
@@ -17,7 +17,7 @@ const reposArr = [
   }
 ];
 
-const projectsArr = [
+export const projectsArr = [
   {
     id: 1,
     name: 'Pet Adoption',
@@ -32,7 +32,7 @@ const projectsArr = [
   }
 ];
 
-const packagesArr = [
+export const packagesArr = [
   {
     id: 1,
     name: 'Apache',
