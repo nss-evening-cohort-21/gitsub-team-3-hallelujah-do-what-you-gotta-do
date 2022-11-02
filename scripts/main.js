@@ -25,7 +25,7 @@ const graham = () => {
   renderToDom("#cardContainer", cardString);
   renderToDom("#formContainer", formString);
 };
-// Eric
+// elf --- Repo Page
 const repoCardStrOnDom = () => {
   const cardDivString = `
   <div class="input-group mb-3">
@@ -85,7 +85,7 @@ const navRepos = () => {
   repoCardStrOnDom();
   renderToDom('#formContainer', repoPageForm);
 }
-// Eric End
+// elf --- Repo Page End
 
 const navProjects = () => {
   let formString = "forrrrrrm";
