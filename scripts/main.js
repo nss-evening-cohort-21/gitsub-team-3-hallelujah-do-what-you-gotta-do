@@ -8,23 +8,38 @@ import { navBarOnDom } from "../components/navBarOnDom.js";
 // querySelectors
 const navBar = document.querySelector("#navBar");
 
+const cardContainer = document.querySelector("#cardContainer");
+
+const formContainer = document.querySelector("#formContainer");
 
 
 // navBar functions
 const graham = () => {
-  console.log("Overview Button");
-}
+  let cardString = "cards";
+  let formString = "form";
+  renderToDom("#cardContainer", cardString);
+  renderToDom("#formContainer", formString);
+};
 
 const navRepos = () => {
-  console.log("Repositories Button"); 
+  let cardString = "cardddddds";
+  let formString = "form";
+  renderToDom("#cardContainer", cardString);
+  renderToDom("#formContainer", formString); 
 }
 
 const navProjects = () => {
-  console.log("Projects Button");
+  let cardString = "cards";
+  let formString = "forrrrrrm";
+  renderToDom("#cardContainer", cardString);
+  renderToDom("#formContainer", formString);
 }
 
 const navPackages = () => {
-  console.log("Packages Button"); 
+  let cardString = "cards";
+  let formString = "feeeeeorm";
+  renderToDom("#cardContainer", cardString);
+  renderToDom("#formContainer", formString);
 }
 
 
