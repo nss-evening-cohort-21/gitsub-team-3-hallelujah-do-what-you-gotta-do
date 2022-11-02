@@ -25,32 +25,65 @@ const graham = () => {
   renderToDom("#formContainer", formString);
 };
 // Eric
-const navRepos = () => {
-  let cardString = `
-  <div class="repos-page-container" id="reposPageContainer">
+const repoCardStrOnDom = () => {
+  const cardDivString = `
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-  </div>`;
-  let formString = "form";
+    <input type="text" class="form-control" placeholder="Search for Repositories..." aria-describedby="basic-addon1">
+  </div>
+  <div id="cardDivContainer" class="card-div-container overflow-auto"></div>`
+  let cardString = ``;
   for (const obj of reposArr) {
     cardString += `
-  <div class="card mb-3" style="max-width: 540px;">
+  <div class="card mb-8" style="">
     <div class="row g-0">
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">${obj.name}</h5>
           <p class="card-text">${obj.description}</p>
           <p class="card-text"><small class="text-muted">${obj.type}</small></p>
+          <button type="button" class="btn btn-outline-secondary btn-sm">
+          <span ><i class="bi bi-star"></i></span> Star
+        </button>
         </div>
       </div>
     </div>
-  </div>
-</div>
-`
+  </div>`
   }
-  renderToDom("#cardContainer", cardString);
+  renderToDom("#cardContainer", cardDivString);
+  renderToDom("#cardDivContainer", cardString);
+}
+const repoFormStrOnDom = () => {
+  const formString = `
+  <div class="form-div-container" id="formContainerDiv">
+    <h3>Create a new repository</h3>
+    <form id="repoPageForm">
+      <div class="form-group">
+        <label for="repoPageInputName">Repository name<span class="red-star">*</span></label>
+        <input type="text" class="form-control" id="repoPageInputName" required>
+      </div>
+      <div class="form-group">
+        <label for="repoPageInputDescription">Description</label>
+        <input type="text" class="form-control repo-input-description" id="repoPageInputDescription" placeholder="" >
+      </div>
+      <button type="submit" class="btn btn-outline-secondary btn-sm" id="repoPageFormBtn">Create repository</button>
+    </form>
+  </div>`;
   renderToDom("#formContainer", formString);
 }
+const addRepo = (e) => {
+  e.preventDefault();
+  const inputVal = document.querySelector('#repoPageInputName');
+  console.log(inputVal.value);
+  console.log('Poop');
+  repoPageForm.reset();
+}
+
+const navRepos = () => {
+  repoCardStrOnDom();
+  repoFormStrOnDom();
+
+}
+// Eric End
 
 const navProjects = () => {
   let formString = "forrrrrrm";
@@ -83,6 +116,7 @@ const navigate = (e) => {
 
 // event listeners
 navBar.addEventListener("click", navigate);
+formContainer.addEventListener('submit', addRepo)
 
 
 const startApp = () => {

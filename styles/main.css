@@ -11,7 +11,7 @@
 }
 
 .card.profile-card {
-  height: 100vh;
+  height: 100%;
 }
 
 .card-img {
@@ -19,9 +19,9 @@
   padding: 11px;
 }
 
-.page-footer {
+/* .page-footer {
   margin-top: -75px;
-}
+} */
 
 .navbar-footer {
   display: flex;
@@ -36,4 +36,21 @@
 
 .navbar-footer.navbar-nav.nav-item {
   display: flex;
+}
+
+/* Repo Page Styles */
+.red-star {
+  color: red;
+}
+
+/* .card-div-container {
+  height: 200px;
+} */
+
+.form-div-container {
+  margin-bottom: 50px;
+}
+
+.repo-input-description {
+  height: 100px;
 }
