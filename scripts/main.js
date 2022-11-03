@@ -241,6 +241,7 @@ const navigate = (e) => {
 // event listeners
 navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo)
+formContainer.addEventListener('submit', addProject);
 
 
 const startApp = () => {
