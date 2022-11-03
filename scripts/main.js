@@ -90,61 +90,58 @@ const navRepos = () => {
 
 // AB -- Projects Page 
 
-const projectsStringOnDom = () => {
-  const projectsDivString = `
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search all projects" aria-describedby="basic-addon1">
-    </div>
-    <div id="projectsDivContainer" class="projects-div-container"></div>`
-  let projectsString = ``;
-  for (const obj of projectsArr) {
-    projectsString += `
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small>And some small print.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-      <small class="text-muted">And some muted small print.</small>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">List group item heading</h5>
-        <small class="text-muted">3 days ago</small>
-      </div>
-      <p class="mb-1">Some placeholder content in a paragraph.</p>
-      <small class="text-muted">And some muted small print.</small>
-    </a>
-  </div>
-  }
+// const projectsStringOnDom = () => {
+//   const projectsDivString = `
+//     <div class="input-group mb-3">
+//       <input type="text" class="form-control" placeholder="Search all projects" aria-describedby="basic-addon1">
+//     </div>
+//     <div id="projectsDivContainer" class="projects-div-container"></div>`
+//   let projectsString = ``;
+//   for (const obj of projectsArr) {
+//     projectsString += `
+//       <div class="list-group">
+//         <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+//           <div class="d-flex w-100 justify-content-between">
+//             <h5 class="mb-1">List group item heading</h5>
+//             <small>3 days ago</small>
+//           </div>
+//           <p class="mb-1">Some placeholder content in a paragraph.</p>
+//           <small>And some small print.</small>
+//         </a>
+//         <a href="#" class="list-group-item list-group-item-action">
+//           <div class="d-flex w-100 justify-content-between">
+//             <h5 class="mb-1">List group item heading</h5>
+//             <small class="text-muted">3 days ago</small>
+//           </div>
+//           <p class="mb-1">Some placeholder content in a paragraph.</p>
+//       <small class="text-muted">And some muted small print.</small>
+//     </a>
+//     <a href="#" class="list-group-item list-group-item-action">
+//       <div class="d-flex w-100 justify-content-between">
+//         <h5 class="mb-1">List group item heading</h5>
+//         <small class="text-muted">3 days ago</small>
+//       </div>
+//       <p class="mb-1">Some placeholder content in a paragraph.</p>
+//       <small class="text-muted">And some muted small print.</small>
+//     </a>
+//   </div>`
+//   }
 
 
 
-}
-  renderToDom("#cardContainer", projectsDivString);
-  renderToDom("#projectsDivContainer", 
-
-
-}
+// }
+//   renderToDom("#cardContainer", projectsDivString);
+//   renderToDom("#projectsDivContainer", 
 
 
 
 
 
 
-const projectsForm = () => {
+// const projectsForm = () => {
 
 
-}
+// }
 
 
 
