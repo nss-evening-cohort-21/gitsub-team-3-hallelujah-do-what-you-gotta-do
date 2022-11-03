@@ -109,7 +109,7 @@ const repoCardStrOnDom = () => {
               <p class="card-text">${obj.description}</p>
               <p class="card-text"><small class="text-muted">${typeConstructor(obj)}</small></p>
               <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
-              <span ><i class="bi bi-star"></i></span> Star
+              <span class="star-span"><i class="bi bi-star"></i></span> Star
               </button>
             </div>
           </div>
@@ -125,7 +125,7 @@ const repoCardStrOnDom = () => {
               <p class="card-text">${obj.description}</p>
               <p class="card-text"><small class="text-muted">${typeConstructor(obj)}</small></p>
               <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
-              <span ><i class="bi bi-star-fill"></i></span> Star
+              <span class="star-span"><i class="bi bi-star-fill"></i></span> Star
             </button>
             </div>
           </div>

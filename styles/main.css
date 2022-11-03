@@ -43,6 +43,11 @@
   margin-bottom: 50px;
 }
 
+.bi,
+.star-span {
+  pointer-events: none;
+}
+
 /* Repo Page Styles ^^^^ elf */
 .scroll {
   margin: 4px, 4px;
