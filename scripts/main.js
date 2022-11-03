@@ -9,6 +9,7 @@ import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
 import { profileOnDom } from "../components/profileOnDom.js";
 import { repoPageForm } from "../components/repoPageFormOnDom.js";
+import { projectsForm } from "../components/projectsPageFormOnDom.js";
 
 // querySelectors
 const navBar = document.querySelector("#navBar");
@@ -189,8 +190,20 @@ const projectsStringOnDom = () => {
   renderToDom("#projectsDivContainer", projectsString);
 }
 
+const addProject = (e) => {
+  e.preventDefault();
+  const newProject = {
+  id: projectsArr.length + 1,
+  name: document.querySelector("#projectName").value,
+  description: document.querySelector("#projectDescription").value
+  //dateAdded: ''
+  }
 
-
+  projectsArr.push(newProject);
+  projectsStringOnDom();
+  renderToDom("#formContainer", projectsForm);
+  projectsForm.reset();
+}
 
 const navProjects = () => {
   formScrollRemove();
