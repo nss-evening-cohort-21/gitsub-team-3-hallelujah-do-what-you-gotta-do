@@ -5,7 +5,12 @@ export const reposArr = [
     pinned: true,
     favorite: false,
     description: 'Sorting Hat Project',
-    type: ['js', 'html', 'css']
+    type: {
+      js: true,
+      html: true,
+      css: true
+    }
+    // type: ['js', 'html', 'css']
   },
   {
     id: 2,
@@ -13,7 +18,12 @@ export const reposArr = [
     pinned: false,
     favorite: true,
     description: 'Profile Page Project',
-    type: ['html', 'css']
+    type: {
+      js: false,
+      html: true,
+      css: true
+    }
+    // type: ['html', 'css']
   }
 ];
 
