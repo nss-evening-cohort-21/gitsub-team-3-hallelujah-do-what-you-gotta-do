@@ -35,14 +35,14 @@ export const projectsArr = [
 export const packagesArr = [
   {
     id: 1,
-    name: 'Apache',
-    description: 'Apache Package',
+    name: 'Apache Maven',
+    description: 'A default package manager used for the Java programming language and the Java runtime environment.',
     icon: ''
   },
   {
     id: 2,
     name: 'Docker',
-    description: 'Docker Package',
+    description: 'A software platform used for building applications based on containers — small and lightweight execution environments.',
     icon: ''
   }
 ];

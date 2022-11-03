@@ -94,12 +94,28 @@ const navProjects = () => {
   renderToDom("#formContainer", formString);
 }
 
+
+// wbv -- packages page start 
 const navPackages = () => {
-  let cardString = "cards";
   let formString = "feeeeeorm";
+  let cardString = ``;
+  for (const member of packagesArr) {
+  cardString += `<div class="card" style="width: 18rem;">
+  <div class="card-body">
+  <span><img src="${member.icon}" alt="${member.icon} Logo"><h5 class="card-title">${member.name}</h5></span>
+  <p class="card-text">${member.description}</p>
+  <button type="button" class="btn-sm text-center btn btn-outline-dark">Learn More</button>
+ </div>
+</div>`};
+
+
   renderToDom("#cardContainer", cardString);
   renderToDom("#formContainer", formString);
-}
+};
+// wbv -- packages page end
+
+
+
 
 
 // navBar event listener function
