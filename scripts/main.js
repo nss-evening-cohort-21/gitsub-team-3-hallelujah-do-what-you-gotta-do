@@ -25,6 +25,7 @@ const graham = () => {
   renderToDom("#cardContainer", cardString);
   renderToDom("#formContainer", formString);
 };
+
 // elf --- Repo Page
 const repoCardStrOnDom = () => {
   const cardDivString = `
@@ -87,12 +88,57 @@ const navRepos = () => {
 }
 // elf --- Repo Page End
 
-const navProjects = () => {
-  let formString = "forrrrrrm";
-  let cardString = "cards";
-  renderToDom("#cardContainer", cardString);
-  renderToDom("#formContainer", formString);
+// AB -- Projects Page 
+
+const projectsStringOnDom = () => {
+  const projectsDivString = `
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search all projects" aria-describedby="basic-addon1">
+    </div>
+    <div id="projectsDivContainer" class="projects-div-container"></div>`
+  let projectsString = ``;
+  for (const obj of projectsArr) {
+    projectsString += `
+      <div class="card" style="width: 18rem;">
+        <Projects class="card-header">Projects Open-Closed</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">${</li>
+          <li class="list-group-item">A second item</li>
+         <li class="list-group-item">A third item</li>           
+         </ul>
+      </div>`
+  }
+
+
+
 }
+  renderToDom("#cardContainer", projectsDivString);
+  renderToDom("#projectsDivContainer", 
+
+
+}
+
+
+
+
+
+
+const projectsForm = () => {
+
+
+}
+
+
+
+
+const navProjects = () => {
+  projectsStringOnDom();
+  renderToDom("#formContainer", projectsForm);
+}
+
+// AB -- Projects Page End
+
+
 
 const navPackages = () => {
   let cardString = "cards";
