@@ -1,0 +1,56 @@
+.profile-div {
+  width: 25%;
+}
+
+.content-div {
+  width: 75%;
+}
+
+.page-container {
+  display: flex;
+}
+
+.card.profile-card {
+  height: 100%;
+}
+
+.card-img {
+  border-radius: 50%;
+  padding: 11px;
+}
+
+.navbar-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-img {
+  height: 40px;
+  margin: 5px 0;
+}
+
+.navbar-footer.navbar-nav.nav-item {
+  display: flex;
+}
+
+/* Repo Page Styles vvvvvv elf */
+.red-star {
+  color: red;
+}
+
+.form-div-container {
+  margin-bottom: 50px;
+}
+
+/* Repo Page Styles ^^^^ elf */
+.scroll {
+  margin: 4px, 4px;
+  padding: 4px;
+  background-color: aqua;
+  width: 500px;
+  height: 110px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+}
