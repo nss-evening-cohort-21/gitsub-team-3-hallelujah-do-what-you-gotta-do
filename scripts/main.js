@@ -29,19 +29,19 @@ function formScrollRemove() {
   element.classList.remove("scroll");
 }
 
-const reposPinned = 
+const reposPinned =
   reposArr.filter(word => word.pinned === true)
-  
+
 
 
 
 
 const graham = () => {
-  
+
   let cardString = "";
   let formString = "";
 
-  for(const member of reposPinned) {
+  for (const member of reposPinned) {
     cardString += `<div class="card">
     
     <div id="studentCardBody" class="card-body">
@@ -58,7 +58,7 @@ const graham = () => {
   }
 
   formScroll();
-  for(const member of reposArr) {
+  for (const member of reposArr) {
     formString += `
     
     <div class="card">
@@ -87,10 +87,20 @@ const repoCardStrOnDom = () => {
   <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="Search for Repositories..." aria-describedby="basic-addon1">
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="languageBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Language
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-menu" aria-labelledby="languageBtn">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="sortBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort
+      </button>
+      <div class="dropdown-menu" aria-labelledby="sortBtn">
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
@@ -100,7 +110,8 @@ const repoCardStrOnDom = () => {
   <div id="repoPageCardDivContainer" class="card-div-container overflow-auto"></div>`
   let cardString = ``;
   for (const obj of reposArr) {
-    cardString += `
+    if (!obj.favorite) {
+      cardString += `
   <div class="card mb-8" style="">
     <div class="row g-0">
       <div class="col-md-8">
@@ -108,13 +119,30 @@ const repoCardStrOnDom = () => {
           <h5 class="card-title">${obj.name}</h5>
           <p class="card-text">${obj.description}</p>
           <p class="card-text"><small class="text-muted">${obj.type}</small></p>
-          <button type="button" class="btn btn-outline-secondary btn-sm">
+          <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
           <span ><i class="bi bi-star"></i></span> Star
         </button>
         </div>
       </div>
     </div>
   </div>`
+    } else if (obj.favorite) {
+      cardString += `
+  <div class="card mb-8" style="">
+    <div class="row g-0">
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">${obj.name}</h5>
+          <p class="card-text">${obj.description}</p>
+          <p class="card-text"><small class="text-muted">${obj.type}</small></p>
+          <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
+          <span ><i class="bi bi-star-fill"></i></span> Star
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>`
+    }
   }
   renderToDom("#cardContainer", cardDivString);
   renderToDom("#repoPageCardDivContainer", cardString);
@@ -147,10 +175,28 @@ const addRepo = (e) => {
   renderToDom('#formContainer', repoPageForm);
   repoPageForm.reset();
 }
+const starRepoBtn = (e) => {
+  if (e.target.id.includes('starBtn')) {
+    const starBtn = e.target
+    const [, btnId] = starBtn.id.split('--');
+    const starIndex = reposArr.findIndex(obj =>
+      obj.id === Number(btnId));
+    const starredRepo = reposArr[starIndex];
+    starredRepo.favorite = true;
+    if (!starBtn.innerHTML.includes('fill')) {
+      starredRepo.favorite = true;
+      starBtn.innerHTML = '<span ><i class="bi bi-star-fill"></i></span> Star'
+    } else if (starBtn.innerHTML.includes('fill')) {
+      starredRepo.favorite = false;
+      starBtn.innerHTML = '<span ><i class="bi bi-star"></i></span> Star'
+    }
+    console.log(starredRepo);
+  }
+}
 const navRepos = () => {
-   formScrollRemove()
-  
-  
+  formScrollRemove()
+
+
   repoCardStrOnDom();
   renderToDom('#formContainer', repoPageForm);
 }
@@ -188,7 +234,8 @@ const navigate = (e) => {
 
 // event listeners
 navBar.addEventListener("click", navigate);
-formContainer.addEventListener('submit', addRepo)
+formContainer.addEventListener('submit', addRepo);
+cardContainer.addEventListener('click', starRepoBtn)
 
 
 const startApp = () => {
