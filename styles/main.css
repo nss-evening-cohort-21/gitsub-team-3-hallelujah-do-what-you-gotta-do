@@ -34,7 +34,7 @@
   display: flex;
 }
 
-/* Repo Page Styles ---- elf */
+/* Repo Page Styles vvvvvv elf */
 .red-star {
   color: red;
 }
@@ -42,13 +42,15 @@
 .form-div-container {
   margin-bottom: 50px;
 }
+
+/* Repo Page Styles ^^^^ elf */
 .scroll {
-  margin:4px, 4px;
-  padding:4px;
+  margin: 4px, 4px;
+  padding: 4px;
   background-color: aqua;
   width: 500px;
   height: 110px;
   overflow-x: hidden;
   overflow-y: auto;
-  text-align:justify;
+  text-align: justify;
 }

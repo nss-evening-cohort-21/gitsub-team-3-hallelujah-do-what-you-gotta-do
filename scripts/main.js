@@ -8,7 +8,8 @@ import { renderToDom } from "../utils/renderToDom.js";
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
 import { profileOnDom } from "../components/profileOnDom.js";
-import { repoPageForm } from "../components/repoPageFormOnDom.js";
+import { repoPageFormOnDom } from "../components/repoPageFormOnDom.js";
+import { repoCardDivString } from "../components/repoCardDivOnDom.js";
 
 // querySelectors
 const navBar = document.querySelector("#navBar");
@@ -82,83 +83,63 @@ const graham = () => {
 };
 
 // elf --- Repo Page
+const typeConstructor = (obj) => {
+  let langStr = '';
+  if (obj.type.js) {
+    langStr += ' JS';
+  }
+  if (obj.type.css) {
+    langStr += ' CSS';
+  }
+  if (obj.type.html) {
+    langStr += ' HTML';
+  }
+  return langStr;
+}
 const repoCardStrOnDom = () => {
-  const cardDivString = `
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Search for Repositories..." aria-describedby="basic-addon1">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="languageBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Language
-      </button>
-      <div class="dropdown-menu" aria-labelledby="languageBtn">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="sortBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Sort
-      </button>
-      <div class="dropdown-menu" aria-labelledby="sortBtn">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </div>
-  </div>
-  <div id="repoPageCardDivContainer" class="card-div-container overflow-auto"></div>`
   let cardString = ``;
   for (const obj of reposArr) {
     if (!obj.favorite) {
       cardString += `
-  <div class="card mb-8" style="">
-    <div class="row g-0">
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">${obj.name}</h5>
-          <p class="card-text">${obj.description}</p>
-          <p class="card-text"><small class="text-muted">${obj.type}</small></p>
-          <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
-          <span ><i class="bi bi-star"></i></span> Star
-        </button>
+      <div class="card mb-8" style="">
+        <div class="row g-0">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${obj.name}</h5>
+              <p class="card-text">${obj.description}</p>
+              <p class="card-text"><small class="text-muted">${typeConstructor(obj)}</small></p>
+              <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
+              <span ><i class="bi bi-star"></i></span> Star
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>`
+      </div>`;
     } else if (obj.favorite) {
       cardString += `
-  <div class="card mb-8" style="">
-    <div class="row g-0">
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">${obj.name}</h5>
-          <p class="card-text">${obj.description}</p>
-          <p class="card-text"><small class="text-muted">${obj.type}</small></p>
-          <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
-          <span ><i class="bi bi-star-fill"></i></span> Star
-        </button>
+      <div class="card mb-8" style="">
+        <div class="row g-0">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${obj.name}</h5>
+              <p class="card-text">${obj.description}</p>
+              <p class="card-text"><small class="text-muted">${typeConstructor(obj)}</small></p>
+              <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
+              <span ><i class="bi bi-star-fill"></i></span> Star
+            </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>`
+      </div>`;
     }
   }
-  renderToDom("#cardContainer", cardDivString);
+  renderToDom("#cardContainer", repoCardDivString);
   renderToDom("#repoPageCardDivContainer", cardString);
 }
-const langArrConstructor = () => {
-  const langArr = [];
-  if (document.querySelector('#checkJs').checked) {
-    langArr.push('js');
-  }
-  if (document.querySelector('#checkHtml').checked) {
-    langArr.push('html');
-  }
-  if (document.querySelector('#checkCss').checked) {
-    langArr.push('css');
-  }
-  return langArr;
+const langArrConstructor = (obj) => {
+  document.querySelector('#checkJs').checked ? obj.type.js = true : obj.type.js = false;
+  document.querySelector('#checkHtml').checked ? obj.type.html = true : obj.type.html = false;
+  document.querySelector('#checkCss').checked ? obj.type.css = true : obj.type.css = false;
 }
 const addRepo = (e) => {
   e.preventDefault();
@@ -168,11 +149,12 @@ const addRepo = (e) => {
     pinned: false,
     favorite: false,
     description: document.querySelector('#repoPageInputDescription').value,
-    type: langArrConstructor()
+    type: {}
   }
+  langArrConstructor(newRepo);
   reposArr.push(newRepo);
   repoCardStrOnDom();
-  renderToDom('#formContainer', repoPageForm);
+  renderToDom('#formContainer', repoPageFormOnDom);
   repoPageForm.reset();
 }
 const starRepoBtn = (e) => {
@@ -198,7 +180,12 @@ const navRepos = () => {
 
 
   repoCardStrOnDom();
-  renderToDom('#formContainer', repoPageForm);
+  renderToDom('#formContainer', repoPageFormOnDom);
+}
+const repoSearch = (e) => {
+  if (e.target.id === "repoSearch") {
+    console.log(e.target.value);
+  }
 }
 // elf --- Repo Page End
 
@@ -236,7 +223,7 @@ const navigate = (e) => {
 navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
 cardContainer.addEventListener('click', starRepoBtn)
-
+cardContainer.addEventListener('keyup', repoSearch)
 
 const startApp = () => {
   renderToDom("#navBar", navBarOnDom);
