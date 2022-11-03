@@ -30,8 +30,18 @@ const repoCardStrOnDom = () => {
   const cardDivString = `
   <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="Search for Repositories..." aria-describedby="basic-addon1">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
   </div>
-  <div id="cardDivContainer" class="card-div-container overflow-auto"></div>`
+  <div id="repoPageCardDivContainer" class="card-div-container overflow-auto"></div>`
   let cardString = ``;
   for (const obj of reposArr) {
     cardString += `
@@ -51,7 +61,7 @@ const repoCardStrOnDom = () => {
   </div>`
   }
   renderToDom("#cardContainer", cardDivString);
-  renderToDom("#cardDivContainer", cardString);
+  renderToDom("#repoPageCardDivContainer", cardString);
 }
 const langArrConstructor = () => {
   const langArr = [];
