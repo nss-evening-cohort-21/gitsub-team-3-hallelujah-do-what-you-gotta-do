@@ -19,11 +19,66 @@ const formContainer = document.querySelector("#formContainer");
 
 
 // navBar functions
+////////////////Graham//////////////////////////////////////
+function formScroll() {
+  const element = document.getElementById("formContainer");
+  element.classList.add("scroll");
+}
+function formScrollRemove() {
+  const element = document.getElementById("formContainer");
+  element.classList.remove("scroll");
+}
+
+const reposPinned = 
+  reposArr.filter(word => word.pinned === true)
+  
+
+
+
+
 const graham = () => {
-  let cardString = "cards";
-  let formString = "form";
+  
+  let cardString = "";
+  let formString = "";
+
+  for(const member of reposPinned) {
+    cardString += `<div class="card">
+    
+    <div id="studentCardBody" class="card-body">
+      <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
+      <p class="card-text"></p>
+      <p></p>
+      <div class="student-card-button-div">
+      <button class="sorting-buttons" id="expelStudent--${member.id}">Pin</button>
+      </div>
+    </div>
+  </div>
+  </div>
+    `
+  }
+
+  formScroll();
+  for(const member of reposArr) {
+    formString += `
+    
+    <div class="card">
+    
+    <div id="studentCardBody" class="card-body">
+      <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
+      <p class="card-text"></p>
+      <p></p>
+      <div class="student-card-button-div">
+      <button class="sorting-buttons" id="expelStudent--${member.id}">Pin</button>
+      </div>
+    </div>
+  </div>
+  </div>
+    `
+  }
+
   renderToDom("#cardContainer", cardString);
   renderToDom("#formContainer", formString);
+
 };
 
 // elf --- Repo Page
@@ -83,6 +138,9 @@ const addRepo = (e) => {
   repoPageForm.reset();
 }
 const navRepos = () => {
+   formScrollRemove()
+  
+  
   repoCardStrOnDom();
   renderToDom('#formContainer', repoPageForm);
 }
@@ -147,6 +205,8 @@ const navRepos = () => {
 
 
 const navProjects = () => {
+  formScrollRemove();
+
   projectsStringOnDom();
   renderToDom("#formContainer", projectsForm);
 }
