@@ -22,14 +22,32 @@ export const projectsArr = [
     id: 1,
     name: 'Pet Adoption',
     description: 'Pet Adoption Project',
-    dateAdded: ''
+    dateAdded: '2022-10-01'
   },
   {
     id: 2,
     name: 'Binary Converter',
     description: 'Binary Converter Project',
-    dateAdded: ''
-  }
+    dateAdded: '2022-09-15'
+  },
+  {
+    id: 3,
+    name: 'Catstagram',
+    description: 'A Social Media Platform for Cats',
+    dateAdded: '2022-07-22'
+  },
+  {
+    id: 4,
+    name: 'Good N-R-gy',
+    description: 'A site devoted to finding ways to energize your life',
+    dateAdded: '2022-05-10'
+  },
+  {
+    id: 5,
+    name: 'Beer Lovers Unite',
+    description: 'A platform for beer lovers to share their beer-speriences',
+    dateAdded: '2022-08-30'
+  },
 ];
 
 export const packagesArr = [

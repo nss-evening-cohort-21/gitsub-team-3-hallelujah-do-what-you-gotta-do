@@ -154,35 +154,26 @@ const projectsStringOnDom = () => {
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Search all projects" aria-describedby="basic-addon1">
     </div>
+    <div class="card">
+      <div class="card-body">Number of projects open - number of projects closed.</div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Project Name</a></li>
+          <li><a class="dropdown-item" href="#">Date Added</a></li>
+        </ul>
+      </div>
+    </div>
     <div id="projectsDivContainer" class="projects-div-container"></div>`
   let projectsString = ``;
-  for (const obj of projectsArr) {
+  for (const project of projectsArr) {
     projectsString += `
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small>And some small print.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small class="text-muted">And some muted small print.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small class="text-muted">And some muted small print.</small>
-        </a>
+      <div class="card text-bg-dark mb-3" style="max-width: 100%;">
+        <div class="card-header">${project.dateAdded}</div>
+        <div class="card-body project-card">
+          <h5 class="card-title">${project.name}</h5>
+          <p class="card-text">${project.description}.</p>
+        </div>
       </div>`
   }
 
@@ -195,8 +186,8 @@ const addProject = (e) => {
   const newProject = {
   id: projectsArr.length + 1,
   name: document.querySelector("#projectName").value,
-  description: document.querySelector("#projectDescription").value
-  //dateAdded: ''
+  description: document.querySelector("#projectDescription").value,
+  dateAdded: document.querySelector("#dateAdded").value
   }
 
   projectsArr.push(newProject);
