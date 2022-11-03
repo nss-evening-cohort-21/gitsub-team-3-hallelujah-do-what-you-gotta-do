@@ -11,16 +11,12 @@
 }
 
 .card.profile-card {
-  height: 100vh;
+  height: 100%;
 }
 
 .card-img {
   border-radius: 50%;
   padding: 11px;
-}
-
-.page-footer {
-  margin-top: -75px;
 }
 
 .navbar-footer {
@@ -36,4 +32,13 @@
 
 .navbar-footer.navbar-nav.nav-item {
   display: flex;
+}
+
+/* Repo Page Styles ---- elf */
+.red-star {
+  color: red;
+}
+
+.form-div-container {
+  margin-bottom: 50px;
 }
