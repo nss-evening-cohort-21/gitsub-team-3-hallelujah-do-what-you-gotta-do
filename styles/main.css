@@ -55,6 +55,11 @@
   width: 75%;
 }
 
+.repo-card-body {
+  display: flex;
+  justify-content: space-between;
+}
+
 .bi,
 .star-span {
   pointer-events: none;

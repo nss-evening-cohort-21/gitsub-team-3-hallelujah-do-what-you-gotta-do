@@ -3,7 +3,7 @@ export const reposArr = [
     id: 1,
     name: 'Sorting Hat',
     pinned: true,
-    favorite: false,
+    favorite: true,
     description: 'Sorting Hat Project',
     type: {
       js: true,
@@ -15,7 +15,7 @@ export const reposArr = [
     id: 2,
     name: 'Profile Page',
     pinned: false,
-    favorite: true,
+    favorite: false,
     description: 'Profile Page Project',
     type: {
       js: false,

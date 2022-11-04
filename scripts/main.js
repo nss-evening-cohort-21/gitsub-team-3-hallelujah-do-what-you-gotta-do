@@ -10,13 +10,13 @@ import { starRepoBtn } from "../functions-repo-page/starRepoBtn.js";
 import { langArrConstructor } from "../functions-repo-page/langArrConstructor.js";
 import { filterLangs } from "../functions-repo-page/filterLangs.js";
 import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
+import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
 import { profileOnDom } from "../components/profileOnDom.js";
 import { repoPageFormOnDom } from "../components/repoPageFormOnDom.js";
 import { repoCardDivString } from "../components/repoCardDivOnDom.js";
-
 // querySelectors
 const navBar = document.querySelector("#navBar");
 
@@ -89,6 +89,13 @@ const graham = () => {
 };
 
 // elf --- Repo Page
+const navRepos = () => {
+  formScrollRemove()
+
+  renderToDom("#cardContainer", repoCardDivString);
+  repoCardStrOnDom(reposArr);
+  renderToDom('#formContainer', repoPageFormOnDom);
+}
 const addRepo = (e) => {
   e.preventDefault();
   const newRepo = {
@@ -105,13 +112,6 @@ const addRepo = (e) => {
   renderToDom('#formContainer', repoPageFormOnDom);
   repoPageForm.reset();
 }
-const navRepos = () => {
-  formScrollRemove()
-
-  renderToDom("#cardContainer", repoCardDivString);
-  repoCardStrOnDom(reposArr);
-  renderToDom('#formContainer', repoPageFormOnDom);
-}
 const repoSearch = (e) => {
   e.preventDefault();
   if (e.target.id === "repoSearch") {
@@ -127,6 +127,7 @@ const repoPageCardFuncs = (e) => {
   starRepoBtn(e);
   filterLangs(e);
   sortRepoPage(e);
+  deleteRepo(e);
 }
 // elf --- Repo Page End
 
@@ -164,7 +165,7 @@ const navigate = (e) => {
 navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
 cardContainer.addEventListener('click', repoPageCardFuncs);
-// cardContainer.addEventListener('click', sortRepoPage);
+// cardContainer.addEventListener('click', deleteRepo);
 cardContainer.addEventListener('keyup', repoSearch);
 
 const startApp = () => {
