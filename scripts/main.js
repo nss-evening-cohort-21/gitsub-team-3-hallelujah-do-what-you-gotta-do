@@ -212,7 +212,7 @@ const projectsStringOnDom = () => {
   let projectsString = ``;
   for (const project of projectsArr) {
     projectsString += `
-      <div class="card text-bg-dark mb-3" style="max-width: 100%;">
+      <div class="card text-bg-light mb-3" style="max-width: 100%;">
         <div class="card-header">${project.dateAdded}</div>
         <div class="card-body project-card">
           <h5 class="card-title">${project.name}</h5>
