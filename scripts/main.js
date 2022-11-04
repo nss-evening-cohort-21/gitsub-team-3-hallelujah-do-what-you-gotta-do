@@ -49,6 +49,7 @@ const pinnedSection = () => {
     </div>
   </div>
   </div>
+  <div id="overviewCardContainer"</div>
     `
   }
    renderToDom("#cardContainer", overviewCardString);
@@ -65,7 +66,7 @@ const graham = () => {
     
     <div class="card">
     
-    <div id="studentCardBody" class="card-body">
+    <div id="studentCardBody" class="card-body form-div-container">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
       <p class="card-text"></p>
       <p></p>
@@ -75,6 +76,7 @@ const graham = () => {
     </div>
   </div>
   </div>
+  
     `
     
   }

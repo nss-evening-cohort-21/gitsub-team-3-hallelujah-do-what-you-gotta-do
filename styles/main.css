@@ -48,9 +48,15 @@
   margin: 4px, 4px;
   padding: 4px;
   background-color: aqua;
-  width: 500px;
-  height: 110px;
+  width: 65%;
+  height: 200px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
+  border:solid black 2px;
+}
+#overviewCardContainer{
+  width:100%;
+  height:50%;
+  margin:bottom 50px;
 }
