@@ -10,6 +10,7 @@ import { footerOnDom } from "../components/footerOnDom.js";
 import { profileOnDom } from "../components/profileOnDom.js";
 import { repoPageFormOnDom } from "../components/repoPageFormOnDom.js";
 import { repoCardDivString } from "../components/repoCardDivOnDom.js";
+import { overviewForm } from "../components/overviewForm.js";
 
 // querySelectors
 const navBar = document.querySelector("#navBar");
@@ -29,7 +30,14 @@ function formScrollRemove() {
   const element = document.getElementById("formContainer");
   element.classList.remove("scroll");
 }
-
+function cardDivAdd() {
+  const element = document.getElementById("cardContainer");
+  element.classList.add("card-div-add");
+}
+function cardDivRemove() {
+  const element = document.getElementById("cardContainer");
+  element.classList.remove("card-div-add");
+}
 
 const pinnedSection = () => {
   let overviewCardString = "";
@@ -49,10 +57,13 @@ const pinnedSection = () => {
     </div>
   </div>
   </div>
-  <div id="overviewCardContainer"</div>
+  <div id="repoPageCardDivContainer" class="card-div-container overflow-auto"></div>
+
     `
   }
+  cardDivAdd();
    renderToDom("#cardContainer", overviewCardString);
+   
 }
 
 
@@ -76,14 +87,14 @@ const graham = () => {
     </div>
   </div>
   </div>
-  
     `
     
   }
 
  
 pinnedSection();
-  renderToDom("#formContainer", formString);
+  renderToDom("#formContainer", overviewForm);
+  renderToDom("#cardsForPin",formString)
 };
   //////////////////////////////////////////////////////
   const pinRepoBtn = (e) => {
@@ -199,7 +210,8 @@ const starRepoBtn = (e) => {
   }
 }
 const navRepos = () => {
-  formScrollRemove()
+  formScrollRemove();
+  cardDivRemove();
 
 
   repoCardStrOnDom();
@@ -214,6 +226,7 @@ const repoSearch = (e) => {
 
 const navProjects = () => {
   formScrollRemove();
+  cardDivRemove();
   let formString = "forrrrrrm";
   let cardString = "cards";
   renderToDom("#cardContainer", cardString);
@@ -221,6 +234,8 @@ const navProjects = () => {
 }
 
 const navPackages = () => {
+  formScrollRemove();
+  cardDivRemove();
   let cardString = "cards";
   let formString = "feeeeeorm";
   renderToDom("#cardContainer", cardString);
