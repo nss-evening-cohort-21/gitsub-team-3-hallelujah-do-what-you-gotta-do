@@ -20,33 +20,19 @@ const cardContainer = document.querySelector("#cardContainer");
 const formContainer = document.querySelector("#formContainer");
 
 
+
+
 // navBar functions
 ////////////////Graham//////////////////////////////////////
-/*function formScroll() {
-  const element = document.getElementById("formContainer");
-  element.classList.add("scroll");
-}
-function formScrollRemove() {
-  const element = document.getElementById("formContainer");
-  element.classList.remove("scroll");
-}
-function cardDivAdd() {
-  const element = document.getElementById("cardContainer");
-  element.classList.add("card-div-add");
-}
-function cardDivRemove() {
-  const element = document.getElementById("cardContainer");
-  element.classList.remove("card-div-add");
-}*/
+
 
 const pinnedSection = () => {
   let overviewCardString = "";
-  const reposPinned =
-  reposArr.filter(word => word.pinned === true)
+
+  const reposPinned = reposArr.filter(word => word.pinned === true)
 
   for (const member of reposPinned) {
     overviewCardString += `<div class="card">
-    
     <div id="studentCardBody" class="card-body">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
       <p class="card-text">${member.description}</p>
@@ -57,29 +43,17 @@ const pinnedSection = () => {
     </div>
   </div>
   </div>
-  <div id="repoPageCardDivContainer" class="card-div-container overflow-auto"></div>
-
-    `
+  <div id="repoPageCardDivContainer" class="card-div-container overflow-auto"></div> `
   }
-  //cardDivAdd();
-  
    renderToDom("#cardContainer", overviewCardContainer);
    renderToDom("#cardsPinned",overviewCardString);
-   //renderToDom("#formContainer", overviewForm);
-   //renderToDom("#cardsForPin",formString)
-}
-
+  }
 
 const graham = () => {
-
   let formString = "";
-  
-  //formScroll();
   for (const member of reposArr) {
     formString += 
-    
     `<div>
-    
     <div id="studentCardBody" class="card-body overview-card">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
       <p class="card-text">${member.description}</p>
@@ -88,51 +62,51 @@ const graham = () => {
       <button class="pin-repo" id="pinRepo--${member.id}">Pin</button>
       </div>
     </div>
-  </div>
-  
-    `
-    
-  }
-
- 
+  </div> `
+     }
 pinnedSection();
   renderToDom("#formContainer", overviewForm);
   renderToDom("#cardsForPin",formString)
 };
-  //////////////////////////////////////////////////////
+//pinfunctions//
   const pinRepoBtn = (e) => {
     if (e.target.id.includes('pinRepo--')) {
       const pinBtn = e.target
       const [, btnId] = pinBtn.id.split('--');
-      const pinIndex = reposArr.findIndex(obj =>
-        obj.id === Number(btnId));
-
+      const pinIndex = reposArr.findIndex(repos =>
+        repos.id === Number(btnId));
       const pinnedRepo = reposArr[pinIndex];
-     pinnedRepo.pinned = true;
-   
-      console.log('pinpin',pinnedRepo.pinned)
-console.log(reposArr)
-     pinnedSection();
-   graham();
+        pinnedRepo.pinned = true;
+        pinnedSection();
+        graham();
     }
    }
    const unpinRepoBtn = (e) => {
     if (e.target.id.includes('unpinRepo--')) {
       const unpinBtn = e.target
       const [, btnId] = unpinBtn.id.split('--');
-      const unpinIndex = reposArr.findIndex(obj =>
-        obj.id === Number(btnId));
-
+      const unpinIndex = reposArr.findIndex(repos =>
+        repos.id === Number(btnId));
       const unpinnedRepo = reposArr[unpinIndex];
-     unpinnedRepo.pinned = false;
-   
-      
-console.log(reposArr)
-     pinnedSection();
-   graham();
+            unpinnedRepo.pinned = false;
+    pinnedSection();
+    graham();
     }
    }
-
+   /////////////////////////////
+   
+   const search = (event) => {
+    
+    const userInput = event.target.value.toLowerCase();
+    const searchResult = reposArr.filter(taco => 
+      taco.name.toLowerCase().includes(userInput)||
+      taco.description.toLowerCase().includes(userInput)||
+      taco.description.toLowerCase().includes(userInput)  
+    )
+    console.log('this is the searchbar')
+  console.log(searchResult);
+  }
+//////////////////////////////////////
 
 // elf --- Repo Page
 const typeConstructor = (obj) => {
@@ -282,12 +256,14 @@ cardContainer.addEventListener('click', starRepoBtn)
 cardContainer.addEventListener('keyup', repoSearch)
 formContainer.addEventListener('click', pinRepoBtn)
 cardContainer.addEventListener('click',unpinRepoBtn)
+
 const startApp = () => {
   renderToDom("#navBar", navBarOnDom);
   renderToDom("#profileDiv", profileOnDom);
   renderToDom('#pageFooter', footerOnDom);
   graham();
   pinnedSection();
+  document.querySelector('#searchInput').addEventListener('click', search)
 };
 
 startApp();
