@@ -34,30 +34,32 @@ const reposPinned =
   reposArr.filter(word => word.pinned === true)
 
 
-
-
-
-const graham = () => {
-
-  let cardString = "";
-  let formString = "";
-
+const pinnedSection = () => {
+  let overviewCardString = "";
+  
   for (const member of reposPinned) {
-    cardString += `<div class="card">
+    overviewCardString += `<div class="card">
     
     <div id="studentCardBody" class="card-body">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
       <p class="card-text"></p>
       <p></p>
       <div class="student-card-button-div">
-      <button class="sorting-buttons" id="expelStudent--${member.id}">Pin</button>
+      <button class="pin-pin" id="pinPin">Pin</button>
       </div>
     </div>
   </div>
   </div>
     `
   }
+   renderToDom("#cardContainer", overviewCardString);
+}
 
+
+const graham = () => {
+
+  let formString = "";
+  
   formScroll();
   for (const member of reposArr) {
     formString += `
@@ -69,18 +71,43 @@ const graham = () => {
       <p class="card-text"></p>
       <p></p>
       <div class="student-card-button-div">
-      <button class="sorting-buttons" id="expelStudent--${member.id}">Pin</button>
+      <button class="pin-repo" id="pinRepo--${member.id}">Pin</button>
       </div>
     </div>
   </div>
   </div>
     `
+    
   }
 
-  renderToDom("#cardContainer", cardString);
-  renderToDom("#formContainer", formString);
+ 
 
+  renderToDom("#formContainer", formString);
 };
+  //////////////////////////////////////////////////////
+  const pinRepoBtn = (e) => {
+    if (e.target.id.includes('pinRepo--')) {
+      const pinBtn = e.target
+      const [, btnId] = pinBtn.id.split('--');
+      const pinIndex = reposArr.findIndex(obj =>
+        obj.id === Number(btnId));
+      const pinnedRepo = reposArr[pinIndex];
+     pinnedRepo.pinned = true;
+     /*if (!pinBtn.innerHTML.includes('fill')) {
+        starredRepo.favorite = true;
+        starBtn.innerHTML = '<span ><i class="bi bi-star-fill"></i></span> Star'
+      } else if (starBtn.innerHTML.includes('fill')) {
+        starredRepo.favorite = false;
+        starBtn.innerHTML = '<span ><i class="bi bi-star"></i></span> Star'
+      }
+      console.log(starredRepo);*/
+      console.log('pinpin')
+      pinnedSection();
+      graham();
+    }
+  }
+
+
 
 // elf --- Repo Page
 const typeConstructor = (obj) => {
@@ -224,12 +251,14 @@ navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
 cardContainer.addEventListener('click', starRepoBtn)
 cardContainer.addEventListener('keyup', repoSearch)
+formContainer.addEventListener('click', pinRepoBtn)
 
 const startApp = () => {
   renderToDom("#navBar", navBarOnDom);
   renderToDom("#profileDiv", profileOnDom);
   renderToDom('#pageFooter', footerOnDom);
   graham();
+  pinnedSection();
 };
 
 startApp();
