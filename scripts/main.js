@@ -10,8 +10,12 @@ import { footerOnDom } from "../components/footerOnDom.js";
 import { profileOnDom } from "../components/profileOnDom.js";
 import { repoPageFormOnDom } from "../components/repoPageFormOnDom.js";
 import { repoCardDivString } from "../components/repoCardDivOnDom.js";
-
+import { createPackage } from "../components/packageFormOnDom.js";
+import { packageFormOnDom } from "../components/packageFormOnDom.js";
+import { packagesOnDom } from "../components/packageFormOnDom.js";
 import { projectsForm } from "../components/projectsPageFormOnDom.js";
+
+
 
 // querySelectors
 const navBar = document.querySelector("#navBar");
@@ -249,14 +253,26 @@ const navProjects = () => {
 
 // AB -- Projects Page End
 
+// wbv -- packages page start 
+
+
 
 
 const navPackages = () => {
-  let cardString = "cards";
-  let formString = "feeeeeorm";
-  renderToDom("#cardContainer", cardString);
-  renderToDom("#formContainer", formString);
-}
+  packagesOnDom();
+  packageFormOnDom();
+  const packForm = document.querySelector("#packageForm");
+  packForm.addEventListener('submit', createPackage);
+  const clearDiv = ``;
+  renderToDom("#formContainer", clearDiv);
+};
+
+
+
+// wbv -- packages page end
+
+
+
 
 
 // navBar event listener function
