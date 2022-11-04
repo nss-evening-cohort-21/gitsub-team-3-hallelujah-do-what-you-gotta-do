@@ -37,12 +37,14 @@ export const packagesArr = [
     id: 1,
     name: 'Apache Maven',
     description: 'A default package manager used for the Java programming language and the Java runtime environment.',
-    icon: ''
+    icon: 'https://assets.stickpng.com/images/62a78ca8e42d729d928b174d.png',
+    link: 'https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry'
   },
   {
     id: 2,
     name: 'Docker',
     description: 'A software platform used for building applications based on containers — small and lightweight execution environments.',
-    icon: ''
+    icon: 'https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png',
+    link: 'https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-docker-registry'
   }
 ];

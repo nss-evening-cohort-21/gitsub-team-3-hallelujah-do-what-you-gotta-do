@@ -157,14 +157,15 @@ const navProjects = () => {
 
 // wbv -- packages page start 
 const navPackages = () => {
-  let formString = "feeeeeorm";
+  let formString = "Form TBD";
   let cardString = ``;
+  let tempString = `<button type="button" class="btn-sm btn btn-outline-dark">Learn More</button>`
   for (const member of packagesArr) {
   cardString += `<div class="card" style="width: 18rem;">
   <div class="card-body">
-  <span><img src="${member.icon}" alt="${member.icon} Logo"><h5 class="card-title">${member.name}</h5></span>
+  <div><img src="${member.icon}" class="logo-icon" alt="${member.icon} Logo"><h5 class="card-title">${member.name}</h5></div>
   <p class="card-text">${member.description}</p>
-  <button type="button" class="btn-sm text-center btn btn-outline-dark">Learn More</button>
+  <a class="btn-sm btn btn-outline-dark" href="${member.link}" target="_blank">Learn More</a>
  </div>
 </div>`};
 
