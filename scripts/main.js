@@ -10,6 +10,10 @@ import { footerOnDom } from "../components/footerOnDom.js";
 import { profileOnDom } from "../components/profileOnDom.js";
 import { repoPageFormOnDom } from "../components/repoPageFormOnDom.js";
 import { repoCardDivString } from "../components/repoCardDivOnDom.js";
+import { createPackage } from "../components/packageFormOnDom.js";
+import { packageFormOnDom } from "../components/packageFormOnDom.js";
+import { packagesOnDom } from "../components/packageFormOnDom.js";
+
 
 // querySelectors
 const navBar = document.querySelector("#navBar");
@@ -200,31 +204,16 @@ const navProjects = () => {
 
 // wbv -- packages page start 
 const navPackages = () => {
-  let formString = "Form TBD";
-  let cardString = ``;
-  for (const member of packagesArr) {
-    if (member.icon==="") {
-      cardString += `<div class="card packages-card" style="width: 18rem;">
-      <div class="card-body">
-      <div><h5 class="card-title inline-block">${member.name}</h5></div>
-      <p class="card-text">${member.description}</p>
-      <a class="btn-sm btn btn-outline-dark" href="${member.link}" target="_blank">Learn More</a>
-     </div>
-    </div>`
-    } else
-  cardString += `<div class="card packages-card" style="width: 18rem;">
-  <div class="card-body">
-  <div><img src="${member.icon}" class="inline-block logo-icon" alt="${member.icon} Logo"><h5 class="card-title inline-block">${member.name}</h5></div>
-  <p class="card-text">${member.description}</p>
-  <a class="btn-sm btn btn-outline-dark" href="${member.link}" target="_blank">Learn More</a>
- </div>
-</div>`};
-
-
-
-  renderToDom("#cardContainer", `<div class="packages-container">`+cardString+`</div>`);
-  renderToDom("#formContainer", formString);
+  packagesOnDom();
+  packageFormOnDom();
+  const packForm = document.querySelector("#packageForm");
+  packForm.addEventListener('submit', createPackage);
+  const clearDiv = ``;
+  renderToDom("#formContainer", clearDiv);
 };
+
+
+
 // wbv -- packages page end
 
 

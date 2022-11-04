@@ -80,3 +80,22 @@
 .packages-card {
   margin: 15px;
 }
+
+.package-form-card {
+  /* padding: 10px; */
+  margin: 10px; 
+  max-width: 800px; 
+  height: auto;
+}
+
+.pack-input {
+  margin: 4px;
+}
+
+.form-intro { 
+  margin: 10px 15px 20px 0px;
+}
+
+.pack-form-submit {
+  margin: 15px 5px 10px 5px;
+}
