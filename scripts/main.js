@@ -165,7 +165,6 @@ const navigate = (e) => {
 navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
 cardContainer.addEventListener('click', repoPageCardFuncs);
-// cardContainer.addEventListener('click', deleteRepo);
 cardContainer.addEventListener('keyup', repoSearch);
 
 const startApp = () => {
