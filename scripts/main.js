@@ -202,18 +202,27 @@ const navProjects = () => {
 const navPackages = () => {
   let formString = "Form TBD";
   let cardString = ``;
-  let tempString = `<button type="button" class="btn-sm btn btn-outline-dark">Learn More</button>`
   for (const member of packagesArr) {
-  cardString += `<div class="card" style="width: 18rem;">
+    if (member.icon==="") {
+      cardString += `<div class="card packages-card" style="width: 18rem;">
+      <div class="card-body">
+      <div><h5 class="card-title inline-block">${member.name}</h5></div>
+      <p class="card-text">${member.description}</p>
+      <a class="btn-sm btn btn-outline-dark" href="${member.link}" target="_blank">Learn More</a>
+     </div>
+    </div>`
+    } else
+  cardString += `<div class="card packages-card" style="width: 18rem;">
   <div class="card-body">
-  <div><img src="${member.icon}" class="logo-icon" alt="${member.icon} Logo"><h5 class="card-title">${member.name}</h5></div>
+  <div><img src="${member.icon}" class="inline-block logo-icon" alt="${member.icon} Logo"><h5 class="card-title inline-block">${member.name}</h5></div>
   <p class="card-text">${member.description}</p>
   <a class="btn-sm btn btn-outline-dark" href="${member.link}" target="_blank">Learn More</a>
  </div>
 </div>`};
 
 
-  renderToDom("#cardContainer", cardString);
+
+  renderToDom("#cardContainer", `<div class="packages-container">`+cardString+`</div>`);
   renderToDom("#formContainer", formString);
 };
 // wbv -- packages page end

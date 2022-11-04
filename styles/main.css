@@ -64,4 +64,19 @@
 .logo-icon {
   max-height: 20px;
   width: auto;
+  margin: 0px 10px 0px 0px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.packages-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.packages-card {
+  margin: 15px;
 }
