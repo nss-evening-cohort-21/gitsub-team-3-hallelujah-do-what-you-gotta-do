@@ -7,9 +7,10 @@ export const repoCardDivString = `
       Language
     </button>
     <div class="dropdown-menu" aria-labelledby="languageBtn">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a class="dropdown-item" id="filterLangsAll">All</a>
+      <a class="dropdown-item" id="filterJS">JavaScript</a>
+      <a class="dropdown-item" id="filterCSS">CSS</a>
+      <a class="dropdown-item" id="filterHTML">HTML</a>
     </div>
   </div>
   <div class="dropdown">
@@ -17,9 +18,9 @@ export const repoCardDivString = `
       Sort
     </button>
     <div class="dropdown-menu" aria-labelledby="sortBtn">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a class="dropdown-item" id="">Action</a>
+      <a class="dropdown-item" id="">Another action</a>
+      <a class="dropdown-item" id="">Something else here</a>
     </div>
   </div>
 </div>

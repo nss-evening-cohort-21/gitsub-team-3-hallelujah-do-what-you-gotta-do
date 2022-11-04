@@ -87,9 +87,6 @@ const graham = () => {
 };
 
 // elf --- Repo Page
-
-
-
 const addRepo = (e) => {
   e.preventDefault();
   const newRepo = {
@@ -106,7 +103,6 @@ const addRepo = (e) => {
   renderToDom('#formContainer', repoPageFormOnDom);
   repoPageForm.reset();
 }
-
 const navRepos = () => {
   formScrollRemove()
 
@@ -124,10 +120,13 @@ const repoSearch = (e) => {
     repoCardStrOnDom(searchArr);
   }
 }
-
 const repoPageCardFuncs = (e) => {
   clearRepoSearch(e);
   starRepoBtn(e);
+}
+
+const filterLangs = (e) => {
+  console.log('filter');
 }
 // elf --- Repo Page End
 
@@ -165,6 +164,7 @@ const navigate = (e) => {
 navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
 cardContainer.addEventListener('click', repoPageCardFuncs);
+cardContainer.addEventListener('click', filterLangs);
 cardContainer.addEventListener('keyup', repoSearch);
 
 const startApp = () => {
