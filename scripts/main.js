@@ -22,7 +22,7 @@ const formContainer = document.querySelector("#formContainer");
 
 // navBar functions
 ////////////////Graham//////////////////////////////////////
-function formScroll() {
+/*function formScroll() {
   const element = document.getElementById("formContainer");
   element.classList.add("scroll");
 }
@@ -37,7 +37,7 @@ function cardDivAdd() {
 function cardDivRemove() {
   const element = document.getElementById("cardContainer");
   element.classList.remove("card-div-add");
-}
+}*/
 
 const pinnedSection = () => {
   let overviewCardString = "";
@@ -61,7 +61,7 @@ const pinnedSection = () => {
 
     `
   }
-  cardDivAdd();
+  //cardDivAdd();
    renderToDom("#cardContainer", overviewCardString);
    
 }
@@ -71,7 +71,7 @@ const graham = () => {
 
   let formString = "";
   
-  formScroll();
+  //formScroll();
   for (const member of reposArr) {
     formString += `
     
@@ -210,8 +210,8 @@ const starRepoBtn = (e) => {
   }
 }
 const navRepos = () => {
-  formScrollRemove();
-  cardDivRemove();
+  //formScrollRemove();
+  //cardDivRemove();
 
 
   repoCardStrOnDom();
@@ -225,8 +225,8 @@ const repoSearch = (e) => {
 // elf --- Repo Page End
 
 const navProjects = () => {
-  formScrollRemove();
-  cardDivRemove();
+  //formScrollRemove();
+  //cardDivRemove();
   let formString = "forrrrrrm";
   let cardString = "cards";
   renderToDom("#cardContainer", cardString);
@@ -234,8 +234,8 @@ const navProjects = () => {
 }
 
 const navPackages = () => {
-  formScrollRemove();
-  cardDivRemove();
+  //formScrollRemove();
+  //cardDivRemove();
   let cardString = "cards";
   let formString = "feeeeeorm";
   renderToDom("#cardContainer", cardString);
