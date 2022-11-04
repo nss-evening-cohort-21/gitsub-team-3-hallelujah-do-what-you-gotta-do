@@ -98,11 +98,8 @@ pinnedSection();
 console.log(reposArr)
      pinnedSection();
    graham();
-   
-    
     }
-   
-  }
+   }
 
 
 
