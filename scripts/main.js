@@ -30,13 +30,12 @@ function formScrollRemove() {
   element.classList.remove("scroll");
 }
 
-const reposPinned =
-  reposArr.filter(word => word.pinned === true)
-
 
 const pinnedSection = () => {
   let overviewCardString = "";
-  
+  const reposPinned =
+  reposArr.filter(word => word.pinned === true)
+
   for (const member of reposPinned) {
     overviewCardString += `<div class="card">
     
@@ -81,7 +80,7 @@ const graham = () => {
   }
 
  
-
+pinnedSection();
   renderToDom("#formContainer", formString);
 };
   //////////////////////////////////////////////////////
@@ -91,20 +90,18 @@ const graham = () => {
       const [, btnId] = pinBtn.id.split('--');
       const pinIndex = reposArr.findIndex(obj =>
         obj.id === Number(btnId));
+
       const pinnedRepo = reposArr[pinIndex];
      pinnedRepo.pinned = true;
-     /*if (!pinBtn.innerHTML.includes('fill')) {
-        starredRepo.favorite = true;
-        starBtn.innerHTML = '<span ><i class="bi bi-star-fill"></i></span> Star'
-      } else if (starBtn.innerHTML.includes('fill')) {
-        starredRepo.favorite = false;
-        starBtn.innerHTML = '<span ><i class="bi bi-star"></i></span> Star'
-      }
-      console.log(starredRepo);*/
-      console.log('pinpin')
-      pinnedSection();
-      graham();
+   
+      console.log('pinpin',pinnedRepo.pinned)
+console.log(reposArr)
+     pinnedSection();
+   graham();
+   
+    
     }
+   
   }
 
 
