@@ -13,6 +13,8 @@ import { repoCardDivString } from "../components/repoCardDivOnDom.js";
 import { createPackage } from "../components/packageFormOnDom.js";
 import { packageFormOnDom } from "../components/packageFormOnDom.js";
 import { packagesOnDom } from "../components/packageFormOnDom.js";
+import { projectsForm } from "../components/projectsPageFormOnDom.js";
+
 
 
 // querySelectors
@@ -193,16 +195,69 @@ const repoSearch = (e) => {
 }
 // elf --- Repo Page End
 
-const navProjects = () => {
-  formScrollRemove();
-  let formString = "forrrrrrm";
-  let cardString = "cards";
-  renderToDom("#cardContainer", cardString);
-  renderToDom("#formContainer", formString);
+// AB -- Projects Page 
+
+const projectsStringOnDom = () => {
+  const projectsDivString = `
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search all projects" aria-describedby="basic-addon1">
+    </div>
+    <div class="card">
+      <div class="card-body">Number of projects open - number of projects closed.</div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Project Name</a></li>
+          <li><a class="dropdown-item" href="#">Date Added</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="projectsDivContainer" class="projects-div-container"></div>`
+  let projectsString = ``;
+  for (const project of projectsArr) {
+    projectsString += `
+      <div class="card text-bg-light mb-3" style="max-width: 100%;">
+        <div class="card-header">${project.dateAdded}</div>
+        <div class="card-body project-card">
+          <h5 class="card-title">${project.name}</h5>
+          <p class="card-text">${project.description}.</p>
+        </div>
+      </div>`
+  }
+
+  renderToDom("#cardContainer", projectsDivString);
+  renderToDom("#projectsDivContainer", projectsString);
 }
 
+const addProject = (e) => {
+  e.preventDefault();
+  const newProject = {
+  id: projectsArr.length + 1,
+  name: document.querySelector("#projectName").value,
+  description: document.querySelector("#projectDescription").value,
+  dateAdded: document.querySelector("#dateAdded").value
+  }
+
+  projectsArr.push(newProject);
+  projectsStringOnDom();
+  renderToDom("#formContainer", projectsForm);
+  projectsForm.reset();
+}
+
+const navProjects = () => {
+  formScrollRemove();
+
+  projectsStringOnDom();
+  renderToDom("#formContainer", projectsForm);
+}
+
+// AB -- Projects Page End
 
 // wbv -- packages page start 
+
+
+
+
 const navPackages = () => {
   packagesOnDom();
   packageFormOnDom();
@@ -239,6 +294,8 @@ navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
 cardContainer.addEventListener('click', starRepoBtn)
 cardContainer.addEventListener('keyup', repoSearch)
+formContainer.addEventListener('submit', addProject);
+
 
 const startApp = () => {
   renderToDom("#navBar", navBarOnDom);
