@@ -1,5 +1,6 @@
 export const repoCardDivString = `
 <div class="input-group mb-3">
+  <button class="btn btn-outline-secondary clear-repo-search" type="button" id="clearRepoSearch">Clear</button>
   <input type="text" class="form-control" placeholder="Search for Repositories..." aria-describedby="basic-addon1" id="repoSearch">
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="languageBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

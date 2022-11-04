@@ -16,13 +16,19 @@
 
 .card-img {
   border-radius: 50%;
-  padding: 11px;
+  padding: 37px;
 }
 
 .navbar-footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer-ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .footer-img {
@@ -40,7 +46,13 @@
 }
 
 .form-div-container {
+  /* height: 50%; */
   margin-bottom: 50px;
+}
+
+.card-div-container {
+  height: 40vh;
+  width: 75%;
 }
 
 .bi,

@@ -4,6 +4,10 @@ import { projectsArr } from "../data/arrays.js";
 import { packagesArr } from "../data/arrays.js";
 // Functions
 import { renderToDom } from "../utils/renderToDom.js";
+import { clearRepoSearch } from "../functions-repo-page/clearRepoSearch.js"
+import { repoCardStrOnDom } from "../functions-repo-page/repoCardStrOnDom.js";
+import { starRepoBtn } from "../functions-repo-page/starRepoBtn.js";
+import { langArrConstructor } from "../functions-repo-page/langArrConstructor.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -83,64 +87,9 @@ const graham = () => {
 };
 
 // elf --- Repo Page
-const typeConstructor = (obj) => {
-  let langStr = '';
-  if (obj.type.js) {
-    langStr += ' JS';
-  }
-  if (obj.type.css) {
-    langStr += ' CSS';
-  }
-  if (obj.type.html) {
-    langStr += ' HTML';
-  }
-  return langStr;
-}
-const repoCardStrOnDom = () => {
-  let cardString = ``;
-  for (const obj of reposArr) {
-    if (!obj.favorite) {
-      cardString += `
-      <div class="card mb-8" style="">
-        <div class="row g-0">
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${obj.name}</h5>
-              <p class="card-text">${obj.description}</p>
-              <p class="card-text"><small class="text-muted">${typeConstructor(obj)}</small></p>
-              <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
-              <span class="star-span"><i class="bi bi-star"></i></span> Star
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>`;
-    } else if (obj.favorite) {
-      cardString += `
-      <div class="card mb-8" style="">
-        <div class="row g-0">
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${obj.name}</h5>
-              <p class="card-text">${obj.description}</p>
-              <p class="card-text"><small class="text-muted">${typeConstructor(obj)}</small></p>
-              <button type="button" class="btn btn-outline-secondary btn-sm" id="starBtn--${obj.id}">
-              <span class="star-span"><i class="bi bi-star-fill"></i></span> Star
-            </button>
-            </div>
-          </div>
-        </div>
-      </div>`;
-    }
-  }
-  renderToDom("#cardContainer", repoCardDivString);
-  renderToDom("#repoPageCardDivContainer", cardString);
-}
-const langArrConstructor = (obj) => {
-  document.querySelector('#checkJs').checked ? obj.type.js = true : obj.type.js = false;
-  document.querySelector('#checkHtml').checked ? obj.type.html = true : obj.type.html = false;
-  document.querySelector('#checkCss').checked ? obj.type.css = true : obj.type.css = false;
-}
+
+
+
 const addRepo = (e) => {
   e.preventDefault();
   const newRepo = {
@@ -153,39 +102,32 @@ const addRepo = (e) => {
   }
   langArrConstructor(newRepo);
   reposArr.push(newRepo);
-  repoCardStrOnDom();
+  repoCardStrOnDom(reposArr);
   renderToDom('#formContainer', repoPageFormOnDom);
   repoPageForm.reset();
 }
-const starRepoBtn = (e) => {
-  if (e.target.id.includes('starBtn')) {
-    const starBtn = e.target
-    const [, btnId] = starBtn.id.split('--');
-    const starIndex = reposArr.findIndex(obj =>
-      obj.id === Number(btnId));
-    const starredRepo = reposArr[starIndex];
-    starredRepo.favorite = true;
-    if (!starBtn.innerHTML.includes('fill')) {
-      starredRepo.favorite = true;
-      starBtn.innerHTML = '<span ><i class="bi bi-star-fill"></i></span> Star'
-    } else if (starBtn.innerHTML.includes('fill')) {
-      starredRepo.favorite = false;
-      starBtn.innerHTML = '<span ><i class="bi bi-star"></i></span> Star'
-    }
-    console.log(starredRepo);
-  }
-}
+
 const navRepos = () => {
   formScrollRemove()
 
-
-  repoCardStrOnDom();
+  renderToDom("#cardContainer", repoCardDivString);
+  repoCardStrOnDom(reposArr);
   renderToDom('#formContainer', repoPageFormOnDom);
 }
 const repoSearch = (e) => {
+  e.preventDefault();
   if (e.target.id === "repoSearch") {
-    console.log(e.target.value);
+    const searchInput = e.target.value.toLowerCase();
+    const searchArr = reposArr.filter(item =>
+      item.name.toLocaleLowerCase().includes(searchInput) ||
+      item.description.toLocaleLowerCase().includes(searchInput));
+    repoCardStrOnDom(searchArr);
   }
+}
+
+const repoPageCardFuncs = (e) => {
+  clearRepoSearch(e);
+  starRepoBtn(e);
 }
 // elf --- Repo Page End
 
@@ -222,8 +164,8 @@ const navigate = (e) => {
 // event listeners
 navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
-cardContainer.addEventListener('click', starRepoBtn)
-cardContainer.addEventListener('keyup', repoSearch)
+cardContainer.addEventListener('click', repoPageCardFuncs);
+cardContainer.addEventListener('keyup', repoSearch);
 
 const startApp = () => {
   renderToDom("#navBar", navBarOnDom);
