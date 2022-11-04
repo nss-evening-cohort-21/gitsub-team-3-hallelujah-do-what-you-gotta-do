@@ -49,8 +49,8 @@ const pinnedSection = () => {
     
     <div id="studentCardBody" class="card-body">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
-      <p class="card-text"></p>
-      <p></p>
+      <p class="card-text">${member.description}</p>
+      <p class="text-muted">${typeConstructor(member)}</p>
       <div class="student-card-button-div">
       <button class="pin-pin" id="unpinRepo--${member.id}">Unpin</button>
       </div>
@@ -82,8 +82,8 @@ const graham = () => {
     
     <div id="studentCardBody" class="card-body overview-card">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
-      <p class="card-text"></p>
-      <p></p>
+      <p class="card-text">${member.description}</p>
+      <p class="text-muted">${typeConstructor(member)}</p>
       <div class="student-card-button-div">
       <button class="pin-repo" id="pinRepo--${member.id}">Pin</button>
       </div>
