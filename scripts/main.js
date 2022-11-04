@@ -11,7 +11,7 @@ import { profileOnDom } from "../components/profileOnDom.js";
 import { repoPageFormOnDom } from "../components/repoPageFormOnDom.js";
 import { repoCardDivString } from "../components/repoCardDivOnDom.js";
 import { overviewForm } from "../components/overviewForm.js";
-
+import { overviewCardContainer } from "../components/overviewCardContainer.js";
 // querySelectors
 const navBar = document.querySelector("#navBar");
 
@@ -52,7 +52,7 @@ const pinnedSection = () => {
       <p class="card-text"></p>
       <p></p>
       <div class="student-card-button-div">
-      <button class="pin-pin" id="pinPin">Pin</button>
+      <button class="pin-pin" id="unpinRepo--${member.id}">Unpin</button>
       </div>
     </div>
   </div>
@@ -62,8 +62,11 @@ const pinnedSection = () => {
     `
   }
   //cardDivAdd();
-   renderToDom("#cardContainer", overviewCardString);
-   
+  
+   renderToDom("#cardContainer", overviewCardContainer);
+   renderToDom("#cardsPinned",overviewCardString);
+   //renderToDom("#formContainer", overviewForm);
+   //renderToDom("#cardsForPin",formString)
 }
 
 
@@ -73,11 +76,11 @@ const graham = () => {
   
   //formScroll();
   for (const member of reposArr) {
-    formString += `
+    formString += 
     
-    <div class="card">
+    `<div>
     
-    <div id="studentCardBody" class="card-body form-div-container">
+    <div id="studentCardBody" class="card-body overview-card">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
       <p class="card-text"></p>
       <p></p>
@@ -86,7 +89,7 @@ const graham = () => {
       </div>
     </div>
   </div>
-  </div>
+  
     `
     
   }
@@ -113,7 +116,22 @@ console.log(reposArr)
    graham();
     }
    }
+   const unpinRepoBtn = (e) => {
+    if (e.target.id.includes('unpinRepo--')) {
+      const unpinBtn = e.target
+      const [, btnId] = unpinBtn.id.split('--');
+      const unpinIndex = reposArr.findIndex(obj =>
+        obj.id === Number(btnId));
 
+      const unpinnedRepo = reposArr[unpinIndex];
+     unpinnedRepo.pinned = false;
+   
+      
+console.log(reposArr)
+     pinnedSection();
+   graham();
+    }
+   }
 
 
 // elf --- Repo Page
@@ -263,7 +281,7 @@ formContainer.addEventListener('submit', addRepo);
 cardContainer.addEventListener('click', starRepoBtn)
 cardContainer.addEventListener('keyup', repoSearch)
 formContainer.addEventListener('click', pinRepoBtn)
-
+cardContainer.addEventListener('click',unpinRepoBtn)
 const startApp = () => {
   renderToDom("#navBar", navBarOnDom);
   renderToDom("#profileDiv", profileOnDom);
