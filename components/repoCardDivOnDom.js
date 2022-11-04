@@ -18,9 +18,8 @@ export const repoCardDivString = `
       Sort
     </button>
     <div class="dropdown-menu" aria-labelledby="sortBtn">
-      <a class="dropdown-item" id="">Action</a>
-      <a class="dropdown-item" id="">Another action</a>
-      <a class="dropdown-item" id="">Something else here</a>
+      <a class="dropdown-item" id="sortRepoName">Name</a>
+      <a class="dropdown-item" id="sortRepoStars">Stars</a>
     </div>
   </div>
 </div>

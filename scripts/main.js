@@ -4,10 +4,12 @@ import { projectsArr } from "../data/arrays.js";
 import { packagesArr } from "../data/arrays.js";
 // Functions
 import { renderToDom } from "../utils/renderToDom.js";
-import { clearRepoSearch } from "../functions-repo-page/clearRepoSearch.js"
 import { repoCardStrOnDom } from "../functions-repo-page/repoCardStrOnDom.js";
+import { clearRepoSearch } from "../functions-repo-page/clearRepoSearch.js"
 import { starRepoBtn } from "../functions-repo-page/starRepoBtn.js";
 import { langArrConstructor } from "../functions-repo-page/langArrConstructor.js";
+import { filterLangs } from "../functions-repo-page/filterLangs.js";
+import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -123,10 +125,8 @@ const repoSearch = (e) => {
 const repoPageCardFuncs = (e) => {
   clearRepoSearch(e);
   starRepoBtn(e);
-}
-
-const filterLangs = (e) => {
-  console.log('filter');
+  filterLangs(e);
+  sortRepoPage(e);
 }
 // elf --- Repo Page End
 
@@ -164,7 +164,7 @@ const navigate = (e) => {
 navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
 cardContainer.addEventListener('click', repoPageCardFuncs);
-cardContainer.addEventListener('click', filterLangs);
+// cardContainer.addEventListener('click', sortRepoPage);
 cardContainer.addEventListener('keyup', repoSearch);
 
 const startApp = () => {

@@ -54,7 +54,7 @@ export const reposArr = [
     favorite: false,
     description: 'No, Sir, Away! A Papaya War is On!',
     type: {
-      js: false,
+      js: true,
       html: true,
       css: false
     }
