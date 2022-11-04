@@ -1,4 +1,4 @@
-export const repoPageForm = `
+export const repoPageFormOnDom = `
 <div class="form-div-container" id="formContainerDiv">
   <h3>Create a new repository</h3>
   <form id="repoPageForm">
