@@ -38,7 +38,7 @@ export const reposArr = [
   {
     id: 4,
     name: 'Alphabet Soup',
-    pinned: false,
+    pinned: true,
     favorite: true,
     description: 'Do wafting zephyrs quickly vex Jumbo?',
     type: {
