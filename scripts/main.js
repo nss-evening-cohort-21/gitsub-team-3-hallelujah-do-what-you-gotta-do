@@ -12,8 +12,10 @@ import { filterLangs } from "../functions-repo-page/filterLangs.js";
 import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
+import { editRepo } from "../functions-repo-page/editRepo.js";
 import { deletePackage } from "../components/packageFormOnDom.js";
 import { overviewFormCardOnDom } from "../functions-repo-page/overviewFormCardOnDom.js";
+import { repoCardSave } from "../functions-repo-page/repoCardSave.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -89,7 +91,7 @@ const formSection = (arr) => {
 const graham = () => {
   formSection(reposArr);
   pinnedSection();
- 
+
 };
 //pinfunctions//
 const pinRepoBtn = (e) => {
@@ -119,18 +121,18 @@ const unpinRepoBtn = (e) => {
 /////////////////////////////
 
 const overviewSearch = (e) => {
-e.preventDefault();
-if(e.target.id === 'searchInput'){
-  const userInput = e.target.value.toLowerCase();
-  const searchResult = reposArr.filter(taco =>
-    taco.name.toLowerCase().includes(userInput) ||
-    taco.description.toLowerCase().includes(userInput) ||
-    taco.description.toLowerCase().includes(userInput));
+  e.preventDefault();
+  if (e.target.id === 'searchInput') {
+    const userInput = e.target.value.toLowerCase();
+    const searchResult = reposArr.filter(taco =>
+      taco.name.toLowerCase().includes(userInput) ||
+      taco.description.toLowerCase().includes(userInput) ||
+      taco.description.toLowerCase().includes(userInput));
     console.log('this is the searchbar')
-  
+
     overviewFormCardOnDom(searchResult);
-  
-}
+
+  }
 
 }
 
@@ -174,6 +176,8 @@ const repoPageCardFuncs = (e) => {
   filterLangs(e);
   sortRepoPage(e);
   deleteRepo(e);
+  editRepo(e);
+  repoCardSave(e);
 }
 // elf --- Repo Page End
 
