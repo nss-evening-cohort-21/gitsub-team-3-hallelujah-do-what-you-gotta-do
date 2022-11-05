@@ -23,6 +23,7 @@ import { overviewCardContainer } from "../components/overviewCardContainer.js";
 import { createPackage } from "../components/packageFormOnDom.js";
 import { packageFormOnDom } from "../components/packageFormOnDom.js";
 import { packagesOnDom } from "../components/packageFormOnDom.js";
+import { projectsDivString } from "../components/projectCardsDivOnDom.js";
 import { projectsForm } from "../components/projectsPageFormOnDom.js";
 
 
@@ -167,21 +168,6 @@ const repoPageCardFuncs = (e) => {
 // AB -- Projects Page 
 
 const projectsStringOnDom = () => {
-  const projectsDivString = `
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search all projects" aria-describedby="basic-addon1">
-    </div>
-    <div class="card">
-      <div class="card-body">Number of projects open - number of projects closed.</div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort</button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Project Name</a></li>
-          <li><a class="dropdown-item" href="#">Date Added</a></li>
-        </ul>
-      </div>
-    </div>
-    <div id="projectsDivContainer" class="projects-div-container"></div>`
   let projectsString = ``;
   for (const project of projectsArr) {
     projectsString += `
