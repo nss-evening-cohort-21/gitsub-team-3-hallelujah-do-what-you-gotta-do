@@ -126,4 +126,23 @@
   margin: 15px 5px 10px 5px;
 }
 
+.delete-package-div {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.delete-package-btn {
+  display: none;
+  height: 30px;
+  text-align: center;
+  border: 0px solid black;
+}
+
+.packages-card:hover .delete-package-btn {
+  display: inline-block;
+}
+
+/* end packages css wbv  */
+
 /* Projects Page Styles -- AB */
