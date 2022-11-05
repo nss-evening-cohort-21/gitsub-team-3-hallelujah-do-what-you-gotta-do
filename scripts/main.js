@@ -60,15 +60,15 @@ const pinnedSection = () => {
   </div>
    `
   }
-   renderToDom("#cardContainer", overviewCardContainer);
-   renderToDom("#cardsPinned",overviewCardString);
-  }
+  renderToDom("#cardContainer", overviewCardContainer);
+  renderToDom("#cardsPinned", overviewCardString);
+}
 
 const graham = () => {
   let formString = "";
   for (const member of reposArr) {
-    formString += 
-    `<div>
+    formString +=
+      `<div>
     <div id="studentCardBody" class="card-body overview-card">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
       <p class="card-text">${member.description}</p>
@@ -78,55 +78,53 @@ const graham = () => {
       </div>
     </div>
   </div> `
-     }
-pinnedSection();
+  }
+  pinnedSection();
   renderToDom("#formContainer", overviewForm);
-  renderToDom("#cardsForPin",formString)
+  renderToDom("#cardsForPin", formString)
 };
 //pinfunctions//
-  const pinRepoBtn = (e) => {
-    if (e.target.id.includes('pinRepo--')) {
-      const pinBtn = e.target
-      const [, btnId] = pinBtn.id.split('--');
-      const pinIndex = reposArr.findIndex(repos =>
-        repos.id === Number(btnId));
-      const pinnedRepo = reposArr[pinIndex];
-        pinnedRepo.pinned = true;
-        pinnedSection();
-        graham();
-    }
-   }
-   const unpinRepoBtn = (e) => {
-    if (e.target.id.includes('unpinRepo--')) {
-      const unpinBtn = e.target
-      const [, btnId] = unpinBtn.id.split('--');
-      const unpinIndex = reposArr.findIndex(repos =>
-        repos.id === Number(btnId));
-      const unpinnedRepo = reposArr[unpinIndex];
-            unpinnedRepo.pinned = false;
+const pinRepoBtn = (e) => {
+  if (e.target.id.includes('pinRepo--')) {
+    const pinBtn = e.target
+    const [, btnId] = pinBtn.id.split('--');
+    const pinIndex = reposArr.findIndex(repos =>
+      repos.id === Number(btnId));
+    const pinnedRepo = reposArr[pinIndex];
+    pinnedRepo.pinned = true;
     pinnedSection();
     graham();
-    }
-   }
-   /////////////////////////////
-   
-   const search = (event) => {
-    
-    const userInput = event.target.value.toLowerCase();
-    const searchResult = reposArr.filter(taco => 
-      taco.name.toLowerCase().includes(userInput)||
-      taco.description.toLowerCase().includes(userInput)||
-      taco.description.toLowerCase().includes(userInput)  
-    )
-    console.log('this is the searchbar')
-  console.log(searchResult);
   }
+}
+const unpinRepoBtn = (e) => {
+  if (e.target.id.includes('unpinRepo--')) {
+    const unpinBtn = e.target
+    const [, btnId] = unpinBtn.id.split('--');
+    const unpinIndex = reposArr.findIndex(repos =>
+      repos.id === Number(btnId));
+    const unpinnedRepo = reposArr[unpinIndex];
+    unpinnedRepo.pinned = false;
+    pinnedSection();
+    graham();
+  }
+}
+/////////////////////////////
+
+const search = (event) => {
+
+  const userInput = event.target.value.toLowerCase();
+  const searchResult = reposArr.filter(taco =>
+    taco.name.toLowerCase().includes(userInput) ||
+    taco.description.toLowerCase().includes(userInput) ||
+    taco.description.toLowerCase().includes(userInput)
+  )
+  console.log('this is the searchbar')
+  console.log(searchResult);
+}
 //////////////////////////////////////
 
 // elf --- Repo Page
 const navRepos = () => {
-  
-
   renderToDom("#cardContainer", repoCardDivString);
   repoCardStrOnDom(reposArr);
   renderToDom('#formContainer', repoPageFormOnDom);
@@ -201,6 +199,7 @@ const projectsStringOnDom = () => {
 }
 
 const addProject = (e) => {
+  e.stopImmediatePropagation();
   e.preventDefault();
   const newProject = {
     id: projectsArr.length + 1,
@@ -208,16 +207,13 @@ const addProject = (e) => {
     description: document.querySelector("#projectDescription").value,
     dateAdded: document.querySelector("#dateAdded").value
   }
-
   projectsArr.push(newProject);
   projectsStringOnDom();
   renderToDom("#formContainer", projectsForm);
-  projectsForm.reset();
+  projectsPageForm.reset();
 }
 
 const navProjects = () => {
-  
-
   projectsStringOnDom();
   renderToDom("#formContainer", projectsForm);
 }
@@ -258,16 +254,24 @@ const navigate = (e) => {
     navRepos();
   }
 };
-
+// Form Submit Event Listener Function
+const formFuncs = (e) => {
+  if (e.target.id === 'repoPageForm') {
+    addRepo(e);
+  }
+  if (e.target.id === 'projectsPageForm') {
+    addProject(e);
+  }
+}
 
 // event listeners
 navBar.addEventListener("click", navigate);
-formContainer.addEventListener('submit', addRepo);
+formContainer.addEventListener('submit', formFuncs);
 cardContainer.addEventListener('keyup', repoSearch)
 formContainer.addEventListener('click', pinRepoBtn)
-cardContainer.addEventListener('click',unpinRepoBtn)
+cardContainer.addEventListener('click', unpinRepoBtn)
 cardContainer.addEventListener('click', repoPageCardFuncs);
-formContainer.addEventListener('submit', addProject);
+
 
 
 const startApp = () => {
@@ -276,7 +280,6 @@ const startApp = () => {
   renderToDom('#pageFooter', footerOnDom);
   graham();
   pinnedSection();
-  // document.querySelector('#searchInput').addEventListener('click', search)
 };
 
 startApp();
