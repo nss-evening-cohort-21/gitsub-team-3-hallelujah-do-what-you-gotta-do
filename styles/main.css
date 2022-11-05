@@ -1,3 +1,5 @@
+
+
 .profile-div {
   width: 25%;
 }
@@ -68,9 +70,10 @@
 /* Repo Page Styles ^^^^ elf */
 /*overview Style*/
 .scroll {
+  margin:2px;
   padding: 4px;
-  width: 600px;
-  height: 200px;
+  width: 800px;
+  height: 300px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
@@ -79,6 +82,9 @@
 .overview-card{
   margin-bottom: 10px;
   border:solid grey 2px;
+}
+.overview-sub-title{
+  margin:5px;
 }
 
 
