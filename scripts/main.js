@@ -15,6 +15,7 @@ import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
 import { editRepo } from "../functions-repo-page/editRepo.js";
 import { deletePackage } from "../components/packageFormOnDom.js";
 import { overviewFormCardOnDom } from "../functions-repo-page/overviewFormCardOnDom.js";
+import { repoCardSave } from "../functions-repo-page/repoCardSave.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -169,27 +170,6 @@ const repoSearch = (e) => {
     repoCardStrOnDom(searchArr);
   }
 }
-
-const repoCardSave = (e) => {
-  if (e.target.id === 'repoCardSave') {
-    const currentCardIndex = reposArr.findIndex(item => item.id === Number(e.target.value));
-    const currentCard = reposArr[currentCardIndex]
-    currentCard.name = document.querySelector('#editRepoName').value;
-    currentCard.description = document.querySelector('#editRepoDescription').value;
-    document.querySelector('#editCheckJs').checked ?
-      currentCard.type.js = true :
-      currentCard.type.js = false;
-    document.querySelector('#editCheckCss').checked ?
-      currentCard.type.css = true :
-      currentCard.type.css = false;
-    document.querySelector('#editCheckHtml').checked ?
-      currentCard.type.html = true :
-      currentCard.type.html = false
-  }
-  repoCardStrOnDom(reposArr);
-}
-
-
 const repoPageCardFuncs = (e) => {
   clearRepoSearch(e);
   starRepoBtn(e);
