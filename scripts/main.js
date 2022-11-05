@@ -12,7 +12,11 @@ import { filterLangs } from "../functions-repo-page/filterLangs.js";
 import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
+<<<<<<< HEAD
 import { deletePackage } from "../components/packageFormOnDom.js";
+=======
+import { overviewFormCardOnDom } from "../functions-repo-page/overviewFormCardOnDom.js";
+>>>>>>> main
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -35,6 +39,7 @@ const navBar = document.querySelector("#navBar");
 const cardContainer = document.querySelector("#cardContainer");
 
 const formContainer = document.querySelector("#formContainer");
+
 
 
 
@@ -65,10 +70,9 @@ const pinnedSection = () => {
   renderToDom("#cardContainer", overviewCardContainer);
   renderToDom("#cardsPinned", overviewCardString);
 }
-
-const graham = () => {
+const formSection = (arr) => {
   let formString = "";
-  for (const member of reposArr) {
+  for (const member of arr) {
     formString +=
       `<div>
     <div id="studentCardBody" class="card-body overview-card">
@@ -81,9 +85,14 @@ const graham = () => {
     </div>
   </div> `
   }
-  pinnedSection();
   renderToDom("#formContainer", overviewForm);
-  renderToDom("#cardsForPin", formString)
+  renderToDom("#cardsForPin", formString);
+}
+
+const graham = () => {
+  formSection(reposArr);
+  pinnedSection();
+ 
 };
 //pinfunctions//
 const pinRepoBtn = (e) => {
@@ -112,17 +121,22 @@ const unpinRepoBtn = (e) => {
 }
 /////////////////////////////
 
-const search = (event) => {
-
-  const userInput = event.target.value.toLowerCase();
+const overviewSearch = (e) => {
+e.preventDefault();
+if(e.target.id === 'searchInput'){
+  const userInput = e.target.value.toLowerCase();
   const searchResult = reposArr.filter(taco =>
     taco.name.toLowerCase().includes(userInput) ||
     taco.description.toLowerCase().includes(userInput) ||
-    taco.description.toLowerCase().includes(userInput)
-  )
-  console.log('this is the searchbar')
-  console.log(searchResult);
+    taco.description.toLowerCase().includes(userInput));
+    console.log('this is the searchbar')
+  
+    overviewFormCardOnDom(searchResult);
+  
 }
+
+}
+
 //////////////////////////////////////
 
 // elf --- Repo Page
@@ -259,7 +273,7 @@ cardContainer.addEventListener('keyup', repoSearch)
 formContainer.addEventListener('click', pinRepoBtn)
 cardContainer.addEventListener('click', unpinRepoBtn)
 cardContainer.addEventListener('click', repoPageCardFuncs);
-
+formContainer.addEventListener('keyup', overviewSearch)
 
 
 const startApp = () => {
