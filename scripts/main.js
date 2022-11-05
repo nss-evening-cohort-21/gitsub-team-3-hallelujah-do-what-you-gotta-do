@@ -158,8 +158,8 @@ const repoSearch = (e) => {
   }
 }
 
-const editRepoCardSave = (e) => {
-  if (e.target.id === 'editRepoCardSave') {
+const repoCardSave = (e) => {
+  if (e.target.id === 'repoCardSave') {
     console.log('Save Poop');
   }
 }
@@ -171,7 +171,7 @@ const repoPageCardFuncs = (e) => {
   sortRepoPage(e);
   deleteRepo(e);
   editRepo(e);
-  editRepoCardSave(e);
+  repoCardSave(e);
 }
 // elf --- Repo Page End
 

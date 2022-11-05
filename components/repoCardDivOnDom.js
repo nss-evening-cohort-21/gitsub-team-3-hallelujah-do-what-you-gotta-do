@@ -36,7 +36,7 @@ export const repoCardDivString = `
   </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="" id="editRepoCardSave">Save</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="" id="repoCardSave">Save</button>
     </div>
   </div>
 </div>
