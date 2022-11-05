@@ -100,7 +100,8 @@ export const packagesArr = [
     name: 'Apache Maven',
     description: 'A default package manager used for the Java programming language and the Java runtime environment.',
     icon: 'https://seeklogo.com/images/A/apache-logo-89257496F9-seeklogo.com.png',
-    link: 'https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry'
+    link: 'https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry', 
+    
   },
   {
     id: 2,

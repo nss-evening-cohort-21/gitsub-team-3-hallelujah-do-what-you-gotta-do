@@ -13,6 +13,7 @@ import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
 import { editRepo } from "../functions-repo-page/editRepo.js";
+import { deletePackage } from "../components/packageFormOnDom.js";
 import { overviewFormCardOnDom } from "../functions-repo-page/overviewFormCardOnDom.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
@@ -239,6 +240,7 @@ const navPackages = () => {
   packForm.addEventListener('submit', createPackage);
   const clearDiv = ``;
   renderToDom("#formContainer", clearDiv);
+  cardContainer.addEventListener('click', deletePackage)
 };
 
 
