@@ -12,6 +12,7 @@ import { filterLangs } from "../functions-repo-page/filterLangs.js";
 import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
+import { deletePackage } from "../components/packageFormOnDom.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -218,6 +219,7 @@ const navPackages = () => {
   packForm.addEventListener('submit', createPackage);
   const clearDiv = ``;
   renderToDom("#formContainer", clearDiv);
+  cardContainer.addEventListener('click', deletePackage)
 };
 
 

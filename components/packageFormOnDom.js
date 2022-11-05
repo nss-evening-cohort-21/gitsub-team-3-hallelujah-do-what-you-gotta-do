@@ -83,8 +83,9 @@ export const createPackage = (e) => {
 export const deletePackage = (e) => {
   if (e.target.id.includes('deletePkg')) {
     const [, btnId] = e.target.id.split('--');
-    const index = packagesArr.findIndex(package => package.id === Number(btnId));
-    packagesArr.splice(index, 1);
+    const index = packagesArr.findIndex(item => item.id === Number(btnId));
+    const deletedPck = packagesArr.splice(index, 1);
     packagesOnDom(); 
+    packageFormOnDom();
   }
 }
