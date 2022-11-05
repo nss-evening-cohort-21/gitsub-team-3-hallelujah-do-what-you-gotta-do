@@ -13,11 +13,11 @@ export const repoCardDivString = `
     <form id="editRepoCardForm">
     <div class="form-group">
       <label for="editRepoName">Edit Name</label>
-      <input type="text" class="form-control" id="editRepoName" placeholder="" value="">
+      <input type="text" class="form-control" id="editRepoName" value="" required>
     </div>
     <div class="form-group">
       <label for="editRepoDescription">Edit Description</label>
-      <input type="text" class="form-control repo-input-description" id="editRepoDescription" placeholder="" value="">
+      <input type="text" class="form-control repo-input-description" id="editRepoDescription" value="" required>
     </div>
     <div>
       <div class="form-check form-check-inline">

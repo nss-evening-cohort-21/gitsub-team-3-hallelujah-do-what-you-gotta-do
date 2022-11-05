@@ -20,6 +20,5 @@ export const editRepo = (e) => {
       editCheckHtml.checked = true :
       editCheckHtml.checked = false;
     document.querySelector('#repoCardSave').value = card.id;
-    console.log(document.querySelector('#repoCardSave').value);
   }
 }
