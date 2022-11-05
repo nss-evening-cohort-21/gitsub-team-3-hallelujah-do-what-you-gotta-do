@@ -8,4 +8,4 @@ export const deleteRepo = (e) => {
     reposArr.splice(index, 1);
     repoCardStrOnDom(reposArr);
   }
-}
+};
