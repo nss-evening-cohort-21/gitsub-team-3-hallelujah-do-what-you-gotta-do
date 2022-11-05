@@ -20,7 +20,7 @@ export const repoCardStrOnDom = (arr) => {
                 <span class="star-span"><i class="bi bi-star"></i></span> Star
                 </button>
                 <button type="button" class="btn btn-outline-secondary btn-sm" id="deleteRepo--${obj.id}">Delete</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm" id="editRepo--${obj.id}" value="${obj.id}" data-bs-toggle="modal" data-bs-target="#repoCardEditModal">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="editRepoBtn--${obj.id}" value="${obj.id}" data-bs-toggle="modal" data-bs-target="#repoCardEditModal">Edit</button>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@ export const repoCardStrOnDom = (arr) => {
                 <span class="star-span"><i class="bi bi-star-fill"></i></span> Star
                 </button>
                 <button type="button" class="btn btn-outline-secondary btn-sm" id="deleteRepo--${obj.id}">Delete</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm" id="editRepo--${obj.id}" value="${obj.id}" data-bs-toggle="modal" data-bs-target="#repoCardEditModal">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="editRepoBtn--${obj.id}" value="${obj.id}" data-bs-toggle="modal" data-bs-target="#repoCardEditModal">Edit</button>
               </div>
             </div>
           </div>

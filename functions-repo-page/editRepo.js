@@ -1,7 +1,7 @@
 import { reposArr } from "../data/arrays.js";
 
 export const editRepo = (e) => {
-  if (e.target.id.includes('editRepo')) {
+  if (e.target.id.includes('editRepoBtn')) {
     const editCheckJs = document.querySelector('#editCheckJs');
     const editCheckCss = document.querySelector('#editCheckCss');
     const editCheckHtml = document.querySelector('#editCheckHtml');
