@@ -12,6 +12,7 @@ import { filterLangs } from "../functions-repo-page/filterLangs.js";
 import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
+import { editRepo } from "../functions-repo-page/editRepo.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -155,12 +156,21 @@ const repoSearch = (e) => {
     repoCardStrOnDom(searchArr);
   }
 }
+
+const editRepoCardSave = (e) => {
+  if (e.target.id === 'editRepoCardSave') {
+    console.log('Save Poop');
+  }
+}
+
 const repoPageCardFuncs = (e) => {
   clearRepoSearch(e);
   starRepoBtn(e);
   filterLangs(e);
   sortRepoPage(e);
   deleteRepo(e);
+  editRepo(e);
+  editRepoCardSave(e);
 }
 // elf --- Repo Page End
 
