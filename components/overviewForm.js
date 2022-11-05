@@ -6,7 +6,7 @@ export const overviewForm = `
  <div class="input-group-prepend">
     
  </div>
-     <input id="searchInput" type="text" class="form-control" placeholder="Search Repositories" aria-label="" aria-describedby="basic-addon1">
+     <input id="searchInput" type="text" class="form-control overview-search" placeholder="Search Repositories" aria-label="">
 </div>
 <div class="form-control scroll" id="cardsForPin">
 </div>
@@ -20,3 +20,4 @@ export const overviewForm = `
      <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
 </div>*/
 //<button id="searchInput"  class="btn btn-outline-secondary" type="button">Search</button>
+//aria-describedby="basic-addon1"

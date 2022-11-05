@@ -70,14 +70,15 @@
 /* Repo Page Styles ^^^^ elf */
 /*overview Style*/
 .scroll {
-  margin:2px;
+  margin:4px;
   padding: 4px;
   width: 800px;
   height: 300px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
-  border:solid black 2px;
+  border:solid silver 3px;
+  
 }
 .overview-card{
   margin-bottom: 10px;
@@ -86,8 +87,17 @@
 .overview-sub-title{
   margin:5px;
 }
-
-
+.overviewBtn{
+  background-color:white;
+}
+.overviewBtn:hover{
+  background-color:silver;
+}
+.overview-search{
+  border:solid silver 3px;
+  width:400px;
+  
+}
 
 
 

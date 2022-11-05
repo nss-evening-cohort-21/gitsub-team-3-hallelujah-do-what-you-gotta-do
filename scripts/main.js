@@ -57,7 +57,7 @@ const pinnedSection = () => {
       <p class="card-text">${member.description}</p>
       <p class="text-muted">${typeConstructor(member)}</p>
       <div class="student-card-button-div">
-      <button class="pin-pin" id="unpinRepo--${member.id}">Unpin</button>
+      <button class="pin-pin overviewBtn" id="unpinRepo--${member.id}">Unpin</button>
       </div>
     </div>
   </div>
@@ -77,7 +77,7 @@ const formSection = (arr) => {
       <p class="card-text">${member.description}</p>
       <p class="text-muted">${typeConstructor(member)}</p>
       <div class="student-card-button-div">
-      <button class="pin-repo" id="pinRepo--${member.id}">Pin</button>
+      <button class="pin-repo overviewBtn" id="pinRepo--${member.id}">Pin</button>
       </div>
     </div>
   </div> `
