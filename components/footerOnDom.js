@@ -5,7 +5,7 @@ export const footerOnDom = `
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse navbar-footer" id="footerNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav footer-ul">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#">Terms</a>
             </li>
