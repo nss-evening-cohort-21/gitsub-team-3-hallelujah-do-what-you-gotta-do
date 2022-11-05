@@ -230,7 +230,8 @@ const navPackages = () => {
   packForm.addEventListener('submit', createPackage);
   const clearDiv = ``;
   renderToDom("#formContainer", clearDiv);
-  cardContainer.addEventListener('click', deletePackage)
+  cardContainer.addEventListener('click', deletePackage);
+  document.querySelector('#packagesSearch').addEventListener('keyup', search);
 };
 
 
