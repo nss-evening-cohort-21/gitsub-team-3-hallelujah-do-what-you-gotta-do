@@ -3,7 +3,7 @@ import { packagesArr } from "../data/arrays.js";
 
 
 export const packagesOnDom = () => {
-  let cardString = ``;
+  let cardString = `<div class="package-search-container"><input id="packageSearch" class="package-search form-control form-control-lg" type="text" placeholder="Search"></div>`;
   for (const member of packagesArr) {
     if (member.icon==="") {
       cardString += `<div class="card packages-card" style="width: 18rem;">
@@ -88,4 +88,4 @@ export const deletePackage = (e) => {
     packagesOnDom(); 
     packageFormOnDom();
   }
-}
+};
