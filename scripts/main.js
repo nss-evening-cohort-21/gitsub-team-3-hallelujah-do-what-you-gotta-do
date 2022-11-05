@@ -11,12 +11,15 @@ import { langArrConstructor } from "../functions-repo-page/langArrConstructor.js
 import { filterLangs } from "../functions-repo-page/filterLangs.js";
 import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
+import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
 import { profileOnDom } from "../components/profileOnDom.js";
 import { repoPageFormOnDom } from "../components/repoPageFormOnDom.js";
 import { repoCardDivString } from "../components/repoCardDivOnDom.js";
+import { overviewForm } from "../components/overviewForm.js";
+import { overviewCardContainer } from "../components/overviewCardContainer.js";
 import { createPackage } from "../components/packageFormOnDom.js";
 import { packageFormOnDom } from "../components/packageFormOnDom.js";
 import { packagesOnDom } from "../components/packageFormOnDom.js";
@@ -32,72 +35,97 @@ const cardContainer = document.querySelector("#cardContainer");
 const formContainer = document.querySelector("#formContainer");
 
 
+
+
 // navBar functions
 ////////////////Graham//////////////////////////////////////
-function formScroll() {
-  const element = document.getElementById("formContainer");
-  element.classList.add("scroll");
-}
-function formScrollRemove() {
-  const element = document.getElementById("formContainer");
-  element.classList.remove("scroll");
-}
-
-const reposPinned =
-  reposArr.filter(word => word.pinned === true)
 
 
+const pinnedSection = () => {
+  let overviewCardString = "";
 
-
-
-const graham = () => {
-
-  let cardString = "";
-  let formString = "";
+  const reposPinned = reposArr.filter(word => word.pinned === true)
 
   for (const member of reposPinned) {
-    cardString += `<div class="card">
-    
+    overviewCardString += `<div class="card">
     <div id="studentCardBody" class="card-body">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
-      <p class="card-text"></p>
-      <p></p>
+      <p class="card-text">${member.description}</p>
+      <p class="text-muted">${typeConstructor(member)}</p>
       <div class="student-card-button-div">
-      <button class="sorting-buttons" id="expelStudent--${member.id}">Pin</button>
+      <button class="pin-pin" id="unpinRepo--${member.id}">Unpin</button>
       </div>
     </div>
   </div>
   </div>
-    `
+   `
+  }
+   renderToDom("#cardContainer", overviewCardContainer);
+   renderToDom("#cardsPinned",overviewCardString);
   }
 
-  formScroll();
+const graham = () => {
+  let formString = "";
   for (const member of reposArr) {
-    formString += `
-    
-    <div class="card">
-    
-    <div id="studentCardBody" class="card-body">
+    formString += 
+    `<div>
+    <div id="studentCardBody" class="card-body overview-card">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
-      <p class="card-text"></p>
-      <p></p>
+      <p class="card-text">${member.description}</p>
+      <p class="text-muted">${typeConstructor(member)}</p>
       <div class="student-card-button-div">
-      <button class="sorting-buttons" id="expelStudent--${member.id}">Pin</button>
+      <button class="pin-repo" id="pinRepo--${member.id}">Pin</button>
       </div>
     </div>
-  </div>
-  </div>
-    `
-  }
-
-  renderToDom("#cardContainer", cardString);
-  renderToDom("#formContainer", formString);
-
+  </div> `
+     }
+pinnedSection();
+  renderToDom("#formContainer", overviewForm);
+  renderToDom("#cardsForPin",formString)
 };
+//pinfunctions//
+  const pinRepoBtn = (e) => {
+    if (e.target.id.includes('pinRepo--')) {
+      const pinBtn = e.target
+      const [, btnId] = pinBtn.id.split('--');
+      const pinIndex = reposArr.findIndex(repos =>
+        repos.id === Number(btnId));
+      const pinnedRepo = reposArr[pinIndex];
+        pinnedRepo.pinned = true;
+        pinnedSection();
+        graham();
+    }
+   }
+   const unpinRepoBtn = (e) => {
+    if (e.target.id.includes('unpinRepo--')) {
+      const unpinBtn = e.target
+      const [, btnId] = unpinBtn.id.split('--');
+      const unpinIndex = reposArr.findIndex(repos =>
+        repos.id === Number(btnId));
+      const unpinnedRepo = reposArr[unpinIndex];
+            unpinnedRepo.pinned = false;
+    pinnedSection();
+    graham();
+    }
+   }
+   /////////////////////////////
+   
+   const search = (event) => {
+    
+    const userInput = event.target.value.toLowerCase();
+    const searchResult = reposArr.filter(taco => 
+      taco.name.toLowerCase().includes(userInput)||
+      taco.description.toLowerCase().includes(userInput)||
+      taco.description.toLowerCase().includes(userInput)  
+    )
+    console.log('this is the searchbar')
+  console.log(searchResult);
+  }
+//////////////////////////////////////
 
 // elf --- Repo Page
 const navRepos = () => {
-  formScrollRemove()
+  
 
   renderToDom("#cardContainer", repoCardDivString);
   repoCardStrOnDom(reposArr);
@@ -188,7 +216,7 @@ const addProject = (e) => {
 }
 
 const navProjects = () => {
-  formScrollRemove();
+  
 
   projectsStringOnDom();
   renderToDom("#formContainer", projectsForm);
@@ -235,8 +263,10 @@ const navigate = (e) => {
 // event listeners
 navBar.addEventListener("click", navigate);
 formContainer.addEventListener('submit', addRepo);
+cardContainer.addEventListener('keyup', repoSearch)
+formContainer.addEventListener('click', pinRepoBtn)
+cardContainer.addEventListener('click',unpinRepoBtn)
 cardContainer.addEventListener('click', repoPageCardFuncs);
-cardContainer.addEventListener('keyup', repoSearch);
 formContainer.addEventListener('submit', addProject);
 
 
@@ -245,6 +275,8 @@ const startApp = () => {
   renderToDom("#profileDiv", profileOnDom);
   renderToDom('#pageFooter', footerOnDom);
   graham();
+  pinnedSection();
+  // document.querySelector('#searchInput').addEventListener('click', search)
 };
 
 startApp();

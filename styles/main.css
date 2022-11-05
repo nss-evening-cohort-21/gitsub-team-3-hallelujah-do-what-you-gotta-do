@@ -66,15 +66,19 @@
 }
 
 /* Repo Page Styles ^^^^ elf */
+/*overview Style*/
 .scroll {
-  margin: 4px, 4px;
   padding: 4px;
-  background-color: aqua;
-  width: 500px;
-  height: 110px;
+  width: 600px;
+  height: 200px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
+  border:solid black 2px;
+}
+.overview-card{
+  margin-bottom: 10px;
+  border:solid grey 2px;
 }
 
 
