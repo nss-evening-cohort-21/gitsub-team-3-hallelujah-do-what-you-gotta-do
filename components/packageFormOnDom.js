@@ -8,7 +8,7 @@ export const packagesOnDom = () => {
     if (member.icon==="") {
       cardString += `<div class="card packages-card" style="width: 18rem;">
       <div class="card-body">
-      <div class="delete-package-div"><h5 class="inline-block card-title inline-block">${member.name}</h5><button type="button" class="btn btn-sm inline-block btn-light delete-package-btn">x</button></div>
+      <div class="delete-package-div"><h5 class="inline-block card-title inline-block">${member.name}</h5><button type="button" id="deletePkg--${member.id}" class="btn btn-sm inline-block btn-light delete-package-btn">x</button></div>
       <p class="card-text">${member.description}</p>
       <a class="btn-sm btn btn-outline-dark" href="${member.link}" target="_blank">Learn More</a>
      </div>
@@ -16,7 +16,7 @@ export const packagesOnDom = () => {
     } else
   cardString += `<div class="card packages-card" style="width: 18rem;">
   <div class="card-body">
-  <div class="delete-package-div"><div class="logo-and-package-name"><img src="${member.icon}" class="inline-block logo-icon" alt="${member.name} Logo"><h5 class="inline-block card-title inline-block">${member.name}</h5></div><button type="button" class="btn btn-sm inline-block btn-light delete-package-btn">x</button></div>
+  <div class="delete-package-div"><div class="logo-and-package-name"><img src="${member.icon}" class="inline-block logo-icon" alt="${member.name} Logo"><h5 class="inline-block card-title inline-block">${member.name}</h5></div><button type="button" id="deletePkg--${member.id}" class="btn btn-sm inline-block btn-light delete-package-btn">x</button></div>
   <p class="card-text">${member.description}</p>
   <a class="btn-sm btn btn-outline-dark" href="${member.link}" target="_blank">Learn More</a>
  </div>
@@ -79,3 +79,12 @@ export const createPackage = (e) => {
   packagesOnDom();
   packageFormOnDom();
 };
+
+export const deletePackage = (e) => {
+  if (e.target.id.includes('deletePkg')) {
+    const [, btnId] = e.target.id.split('--');
+    const index = packagesArr.findIndex(package => package.id === Number(btnId));
+    packagesArr.splice(index, 1);
+    packagesOnDom(); 
+  }
+}
