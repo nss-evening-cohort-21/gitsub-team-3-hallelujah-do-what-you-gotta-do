@@ -273,7 +273,7 @@ const addProject = (e) => {
 }
 
 const navProjects = () => {
-  formScrollRemove();
+  
 
   projectsStringOnDom();
   renderToDom("#formContainer", projectsForm);

@@ -1,9 +1,0 @@
-const search = (event) => {
-  const userInput = event.target.value.toLowerCase();
-  const searchResult = referenceList.filter(taco => 
-    taco.title.toLowerCase().includes(userInput)||
-    taco.author.toLowerCase().includes(userInput)||
-    taco.description.toLowerCase().includes(userInput)  
-  )
-renderCards(searchResult);
-}
