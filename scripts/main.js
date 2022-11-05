@@ -27,6 +27,7 @@ import { packageFormOnDom } from "../components/packageFormOnDom.js";
 import { packagesOnDom } from "../components/packageFormOnDom.js";
 import { projectsDivString } from "../components/projectCardsDivOnDom.js";
 import { projectsForm } from "../components/projectsPageFormOnDom.js";
+import { projectSearchOnDom } from "../components/projectSearchOnDom.js";
 
 
 
@@ -215,12 +216,13 @@ const searchProjects = (e) => {
   e.preventDefault();
   if (e.target.id === "projectSearch") {
   const projSearchInput = e.target.value.toLowerCase();
-  const projSearchResult = projectsArr.filter(item =>
+  const projSearchResultArr = projectsArr.filter(item =>
     item.name.toLowerCase().includes(projSearchInput) ||
     item.description.toLowerCase().includes(projSearchInput) ||
     item.dateAdded.toLowerCase().includes(projSearchInput)
     )
-    projectsStringOnDom(projSearchResult);
+
+    projectSearchOnDom(projSearchResultArr);
   }
 }
 
