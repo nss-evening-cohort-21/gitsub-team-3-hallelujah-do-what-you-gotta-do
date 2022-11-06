@@ -29,6 +29,7 @@ import { packageFormOnDom } from "../components/packageFormOnDom.js";
 import { packagesOnDom } from "../components/packageFormOnDom.js";
 import { projectsDivString } from "../components/projectCardsDivOnDom.js";
 import { projectsForm } from "../components/projectsPageFormOnDom.js";
+import { projectSearchOnDom } from "../components/projectSearchOnDom.js";
 
 
 
@@ -215,6 +216,20 @@ const addProject = (e) => {
   projectsPageForm.reset();
 }
 
+const searchProjects = (e) => {
+  e.preventDefault();
+  if (e.target.id === "projectSearch") {
+  const projSearchInput = e.target.value.toLowerCase();
+  const projSearchResultArr = projectsArr.filter(item =>
+    item.name.toLowerCase().includes(projSearchInput) ||
+    item.description.toLowerCase().includes(projSearchInput) ||
+    item.dateAdded.toLowerCase().includes(projSearchInput)
+    )
+
+    projectSearchOnDom(projSearchResultArr);
+  }
+}
+
 const navProjects = () => {
   projectsStringOnDom();
   renderToDom("#formContainer", projectsForm);
@@ -274,7 +289,8 @@ cardContainer.addEventListener('keyup', repoSearch)
 formContainer.addEventListener('click', pinRepoBtn)
 cardContainer.addEventListener('click', unpinRepoBtn)
 cardContainer.addEventListener('click', repoPageCardFuncs);
-formContainer.addEventListener('keyup', overviewSearch)
+formContainer.addEventListener('keyup', overviewSearch);
+cardContainer.addEventListener('keyup', searchProjects);
 
 
 const startApp = () => {
