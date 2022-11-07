@@ -1,10 +1,11 @@
 import { renderToDom } from "../utils/renderToDom.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
 import { overviewForm } from "../components/overviewForm.js";
+import { reposArr } from "../data/arrays.js";
 
-export const formSection = (arr) => {
+export const formSection = () => {
   let formString = "";
-  for (const member of arr) {
+  for (const member of reposArr) {
     formString +=
       `<div id="studentCardBody" class="overview-card">
         <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>

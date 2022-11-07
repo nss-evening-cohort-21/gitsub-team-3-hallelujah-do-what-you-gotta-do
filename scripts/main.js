@@ -16,6 +16,7 @@ import { deletePackage } from "../components/packageFormOnDom.js";
 import { overviewFormCardOnDom } from "../functions-overview-page/overviewFormCardOnDom.js";
 import { pinnedSection } from "../functions-overview-page/overviewpinnedSection.js";
 import { formSection } from "../functions-overview-page/overviewformSection.js";
+
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -46,11 +47,8 @@ const formContainer = document.querySelector("#formContainer");
 // navBar functions
 
 //OVERVIEW PAGE///
-
-
-
 const graham = () => {
-  formSection(reposArr);
+  formSection();
   pinnedSection();
 };
 //PIN FUNCTIONS///
@@ -66,6 +64,7 @@ const pinRepoBtn = (e) => {
     graham();
   }
 }
+
 const unpinRepoBtn = (e) => {
   if (e.target.id.includes('unpinRepo--')) {
     const unpinBtn = e.target
