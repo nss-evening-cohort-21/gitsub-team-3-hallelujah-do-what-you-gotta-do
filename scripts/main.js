@@ -42,18 +42,15 @@ const formContainer = document.querySelector("#formContainer");
 
 
 // navBar functions
-////////////////Graham//////////////////////////////////////
 
-
+//OVERVIEW PAGE///
 const pinnedSection = () => {
   let overviewCardString = "";
-
   const reposPinned = reposArr.filter(word => word.pinned === true)
-
   for (const member of reposPinned) {
     overviewCardString += `<div class="">
     <div id="pinned-card-style" class="card-body ">
-      <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
+      <h5 class="card-title"><div>${member.name}</div></h5>
       <p class="card-text">${member.description}</p>
       <p class="text-muted">${typeConstructor(member)}</p>
       <div class="student-card-button-div">
@@ -61,27 +58,24 @@ const pinnedSection = () => {
       </div>
     </div>
   </div>
-  </div>
-   `
+  </div>`
   }
   renderToDom("#cardContainer", overviewCardContainer);
   renderToDom("#cardsPinned", overviewCardString);
 }
+
 const formSection = (arr) => {
   let formString = "";
   for (const member of arr) {
     formString +=
-      `
-    <div id="studentCardBody" class="overview-card">
-      <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
-      <div class="overview-card-contents">
-      <p class="card-text">${member.description}</p>
-      <p class="text-muted">${typeConstructor(member)}</p>
-     
-      <button class="pin-repo overviewBtn" id="pinRepo--${member.id}">Pin</button>
-      </div>
-    
-  </div> `
+      `<div id="studentCardBody" class="overview-card">
+        <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
+        <div class="overview-card-contents">
+          <p class="card-text">${member.description}</p>
+          <p class="text-muted">${typeConstructor(member)}</p>
+         <button class="pin-repo overviewBtn" id="pinRepo--${member.id}">Pin</button>
+        </div>
+      </div> `
   }
   renderToDom("#formContainer", overviewForm);
   renderToDom("#cardsForPin", formString);
@@ -90,9 +84,8 @@ const formSection = (arr) => {
 const graham = () => {
   formSection(reposArr);
   pinnedSection();
- 
 };
-//pinfunctions//
+//PIN FUNCTIONS///
 const pinRepoBtn = (e) => {
   if (e.target.id.includes('pinRepo--')) {
     const pinBtn = e.target
@@ -117,8 +110,7 @@ const unpinRepoBtn = (e) => {
     graham();
   }
 }
-/////////////////////////////
-
+//OVERVIEW SEARCH BAR///
 const overviewSearch = (e) => {
 e.preventDefault();
 if(e.target.id === 'searchInput'){
@@ -127,15 +119,11 @@ if(e.target.id === 'searchInput'){
     taco.name.toLowerCase().includes(userInput) ||
     taco.description.toLowerCase().includes(userInput) ||
     taco.description.toLowerCase().includes(userInput));
-    console.log('this is the searchbar')
-  
+
     overviewFormCardOnDom(searchResult);
-  
+  }
 }
-
-}
-
-//////////////////////////////////////
+//END GRAHAM///
 
 // elf --- Repo Page
 const navRepos = () => {

@@ -1,4 +1,4 @@
-export const overviewCardContainer = `<form id="overviewCardContainer">
+export const overviewCardContainer = `<div id="overviewCardContainer">
 <div>
    <h3 class="overview-sub-title">Pinned Repositories</h3>
 </div>
@@ -6,4 +6,4 @@ export const overviewCardContainer = `<form id="overviewCardContainer">
 <div  id="cardsPinned">  
 
 </div>
-</form>`
+</div>`
