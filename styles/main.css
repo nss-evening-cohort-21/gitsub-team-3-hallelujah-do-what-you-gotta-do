@@ -71,35 +71,36 @@
 
 /*overview Style*/
 .scroll {
-  
-  
   width: 800px;
-  height: 300px;
+  height: 350px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
   border:solid white 1px;
-  
 }
 .overview-card{
   margin-bottom: 10px;
-  border:solid grey 2px;
+  border:solid grey 1px;
   border-radius:15px;
   width:100%;
   padding:5px;
 }
+
 .overview-sub-title{
   margin:5px;
 }
 .overviewBtn{
   background-color:white;
   margin:5px;
+  border:solid grey 1px;
+  border-radius:5px;
 }
 .overviewBtn:hover{
-  background-color:silver;
+  background-color:grey;
+  color:white;
 }
 .overview-search{
-  border:solid grey 2px;
+  border:solid grey 1px;
   width:800px;
   height:60px;
   border-radius:15px;
@@ -107,19 +108,15 @@
   padding:10px;
 }
 #overviewSearchDiv{
-  
 border-radius:15px;
-  
 }
-
 #pinned-card-style{
 padding:5px;
   border-radius:15px;
   border:solid grey 1px;
+  width:800px;
 }
-.card-container{
-  
-}
+
 
 
 /* packages page styles -- wbv  */

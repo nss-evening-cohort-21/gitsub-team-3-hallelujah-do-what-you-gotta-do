@@ -72,11 +72,12 @@ const formSection = (arr) => {
   for (const member of arr) {
     formString +=
       `
-    <div id="studentCardBody" class=" overview-card">
+    <div id="studentCardBody" class="overview-card">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
+      <div class="overview-card-contents">
       <p class="card-text">${member.description}</p>
       <p class="text-muted">${typeConstructor(member)}</p>
-      <div class="student-card-button-div">
+     
       <button class="pin-repo overviewBtn" id="pinRepo--${member.id}">Pin</button>
       </div>
     
