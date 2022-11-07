@@ -2,13 +2,12 @@ export const overviewForm = `
 <div id="overviewForm">
       <h3 class="overview-sub-title">Edit Pins</h3>
  </div>
- <div class="input-group mb-3">
- <div class="input-group-prepend">
+
     
- </div>
-     <input id="searchInput" type="text" class="form-control overview-search" placeholder="Search Repositories" aria-label="">
+ <div id="overviewSearchDiv">
+     <input id="searchInput" type="text" class="overview-search" placeholder="Search Repositories">
 </div>
-<div class="form-control scroll" id="cardsForPin">
+<div class=" scroll" id="cardsForPin">
 </div>
 </div>
 `

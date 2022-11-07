@@ -68,37 +68,58 @@
 }
 
 /* Repo Page Styles ^^^^ elf */
+
 /*overview Style*/
 .scroll {
-  margin:4px;
-  padding: 4px;
+  
+  
   width: 800px;
   height: 300px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
-  border:solid silver 3px;
+  border:solid white 1px;
   
 }
 .overview-card{
   margin-bottom: 10px;
   border:solid grey 2px;
+  border-radius:15px;
+  width:100%;
+  padding:5px;
 }
 .overview-sub-title{
   margin:5px;
 }
 .overviewBtn{
   background-color:white;
+  margin:5px;
 }
 .overviewBtn:hover{
   background-color:silver;
 }
 .overview-search{
-  border:solid silver 3px;
-  width:400px;
+  border:solid grey 2px;
+  width:800px;
+  height:60px;
+  border-radius:15px;
+  margin-bottom: 4px;
+  padding:10px;
+}
+#overviewSearchDiv{
+  
+border-radius:15px;
   
 }
 
+#pinned-card-style{
+padding:5px;
+  border-radius:15px;
+  border:solid grey 1px;
+}
+.card-container{
+  
+}
 
 
 /* packages page styles -- wbv  */

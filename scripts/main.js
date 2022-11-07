@@ -51,8 +51,8 @@ const pinnedSection = () => {
   const reposPinned = reposArr.filter(word => word.pinned === true)
 
   for (const member of reposPinned) {
-    overviewCardString += `<div class="card">
-    <div id="studentCardBody" class="card-body">
+    overviewCardString += `<div class="">
+    <div id="pinned-card-style" class="card-body ">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
       <p class="card-text">${member.description}</p>
       <p class="text-muted">${typeConstructor(member)}</p>
@@ -71,15 +71,15 @@ const formSection = (arr) => {
   let formString = "";
   for (const member of arr) {
     formString +=
-      `<div>
-    <div id="studentCardBody" class="card-body overview-card">
+      `
+    <div id="studentCardBody" class=" overview-card">
       <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
       <p class="card-text">${member.description}</p>
       <p class="text-muted">${typeConstructor(member)}</p>
       <div class="student-card-button-div">
       <button class="pin-repo overviewBtn" id="pinRepo--${member.id}">Pin</button>
       </div>
-    </div>
+    
   </div> `
   }
   renderToDom("#formContainer", overviewForm);
