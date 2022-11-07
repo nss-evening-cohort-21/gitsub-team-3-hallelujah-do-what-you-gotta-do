@@ -1,7 +1,7 @@
 export const projectsForm = `
   <div class="projects-form-div-container" id="projectsFormContainerDiv">
     <h3>Create a new project</h3>
-    <h4>Coordinate, track, and update your work in one place, so projects stay transparent and on schedule.</h4>
+    <h5>Coordinate, track, and update your work in one place, so projects stay transparent and on schedule.</h5>
     <form id="projectsPageForm">
       <div class="form-group">
         <label for="projectName">Project board name*</label>

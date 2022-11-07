@@ -12,11 +12,14 @@ import { filterLangs } from "../functions-repo-page/filterLangs.js";
 import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
+import { editRepo } from "../functions-repo-page/editRepo.js";
 import { deletePackage } from "../components/packageFormOnDom.js";
 import { overviewFormCardOnDom } from "../functions-overview-page/overviewFormCardOnDom.js";
 import { pinnedSection } from "../functions-overview-page/overviewpinnedSection.js";
 import { formSection } from "../functions-overview-page/overviewformSection.js";
 
+
+import { repoCardSave } from "../functions-repo-page/repoCardSave.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -30,6 +33,7 @@ import { packageFormOnDom } from "../components/packageFormOnDom.js";
 import { packagesOnDom } from "../components/packageFormOnDom.js";
 import { projectsDivString } from "../components/projectCardsDivOnDom.js";
 import { projectsForm } from "../components/projectsPageFormOnDom.js";
+import { projectSearchOnDom } from "../components/projectSearchOnDom.js";
 
 
 
@@ -50,6 +54,7 @@ const formContainer = document.querySelector("#formContainer");
 const graham = () => {
   formSection();
   pinnedSection();
+
 };
 //PIN FUNCTIONS///
 const pinRepoBtn = (e) => {
@@ -91,6 +96,9 @@ if(e.target.id === 'searchInput'){
   }
 }
 //END GRAHAM///
+  
+
+//////////////////////////////////////
 
 // elf --- Repo Page
 const navRepos = () => {
@@ -130,6 +138,8 @@ const repoPageCardFuncs = (e) => {
   filterLangs(e);
   sortRepoPage(e);
   deleteRepo(e);
+  editRepo(e);
+  repoCardSave(e);
 }
 // elf --- Repo Page End
 
@@ -165,6 +175,20 @@ const addProject = (e) => {
   projectsStringOnDom();
   renderToDom("#formContainer", projectsForm);
   projectsPageForm.reset();
+}
+
+const searchProjects = (e) => {
+  e.preventDefault();
+  if (e.target.id === "projectSearch") {
+  const projSearchInput = e.target.value.toLowerCase();
+  const projSearchResultArr = projectsArr.filter(item =>
+    item.name.toLowerCase().includes(projSearchInput) ||
+    item.description.toLowerCase().includes(projSearchInput) ||
+    item.dateAdded.toLowerCase().includes(projSearchInput)
+    )
+
+    projectSearchOnDom(projSearchResultArr);
+  }
 }
 
 const navProjects = () => {
@@ -226,7 +250,8 @@ cardContainer.addEventListener('keyup', repoSearch)
 formContainer.addEventListener('click', pinRepoBtn)
 cardContainer.addEventListener('click', unpinRepoBtn)
 cardContainer.addEventListener('click', repoPageCardFuncs);
-formContainer.addEventListener('keyup', overviewSearch)
+formContainer.addEventListener('keyup', overviewSearch);
+cardContainer.addEventListener('keyup', searchProjects);
 
 
 const startApp = () => {
