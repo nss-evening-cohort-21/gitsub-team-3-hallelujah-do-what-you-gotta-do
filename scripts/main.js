@@ -13,7 +13,9 @@ import { sortRepoPage } from "../functions-repo-page/sortRepoPage.js";
 import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
 import { deletePackage } from "../components/packageFormOnDom.js";
-import { overviewFormCardOnDom } from "../functions-repo-page/overviewFormCardOnDom.js";
+import { overviewFormCardOnDom } from "../functions-overview-page/overviewFormCardOnDom.js";
+import { pinnedSection } from "../functions-overview-page/overviewpinnedSection.js";
+import { formSection } from "../functions-overview-page/overviewformSection.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
 import { footerOnDom } from "../components/footerOnDom.js";
@@ -44,42 +46,8 @@ const formContainer = document.querySelector("#formContainer");
 // navBar functions
 
 //OVERVIEW PAGE///
-const pinnedSection = () => {
-  let overviewCardString = "";
-  const reposPinned = reposArr.filter(word => word.pinned === true)
-  for (const member of reposPinned) {
-    overviewCardString += `<div class="">
-    <div id="pinned-card-style" class="card-body ">
-      <h5 class="card-title"><div>${member.name}</div></h5>
-      <p class="card-text">${member.description}</p>
-      <p class="text-muted">${typeConstructor(member)}</p>
-      <div class="student-card-button-div">
-      <button class="pin-pin overviewBtn" id="unpinRepo--${member.id}">Unpin</button>
-      </div>
-    </div>
-  </div>
-  </div>`
-  }
-  renderToDom("#cardContainer", overviewCardContainer);
-  renderToDom("#cardsPinned", overviewCardString);
-}
 
-const formSection = (arr) => {
-  let formString = "";
-  for (const member of arr) {
-    formString +=
-      `<div id="studentCardBody" class="overview-card">
-        <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
-        <div class="overview-card-contents">
-          <p class="card-text">${member.description}</p>
-          <p class="text-muted">${typeConstructor(member)}</p>
-         <button class="pin-repo overviewBtn" id="pinRepo--${member.id}">Pin</button>
-        </div>
-      </div> `
-  }
-  renderToDom("#formContainer", overviewForm);
-  renderToDom("#cardsForPin", formString);
-}
+
 
 const graham = () => {
   formSection(reposArr);
