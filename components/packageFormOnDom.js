@@ -2,8 +2,8 @@ import { renderToDom } from "../utils/renderToDom.js";
 import { packagesArr } from "../data/arrays.js";
 
 
-export const packagesPage = `<div class="package-search-container"><input id="packageSearch" class="package-search form-control form-control-lg" type="text" placeholder="Search"></div>
-<div class="package-card-container" id="packagesContainer"></div>
+export const packagesPage = `<div class="package-search-container"><h3 class="packages-heading">Packages</h3><input id="packageSearch" class="package-search form-control form-control-lg" type="text" placeholder="Search Packages"></div>
+<div class="packages-container" id="packagesContainer"></div>
 <div class="package-form-container" id="packFormContainer"></div>`;
 
 export const packagesOnDom = (packObj) => {
@@ -29,7 +29,7 @@ export const packagesOnDom = (packObj) => {
 
 
 
-  renderToDom("#packagesContainer", `<div class="packages-container">`+cardString+`</div><div id="packFormContainer"></div>`);
+  renderToDom("#packagesContainer", cardString);
 };
 
 
@@ -39,7 +39,6 @@ export const packageFormOnDom = () => {
     Add a Package
   </div>
   <div class="card-body package-form-card">
-    <h5 class="form-intro card-text">To add a package to your selection, please fill out the form below.</h5>
    <form id="packageForm">
   <div class="form-group">
     <label for="formGroupExampleInput">Package Name</label>
@@ -47,7 +46,8 @@ export const packageFormOnDom = () => {
   </div>
     <div class="form-group">
     <label for="formGroupExampleInput2">Package Description</label>
-    <input type="text" class="form-control pack-input" id="packageDesc" placeholder="" required>   
+    <input type="text" class="form-control pack-input"  id="packageDesc" placeholder="" required>
+  </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Logo URL</label>
     <input type="text" class="form-control pack-input" id="packageIcon" placeholder="">
@@ -56,9 +56,10 @@ export const packageFormOnDom = () => {
     <label for="formGroupExampleInput2">Package URL</label>
     <input type="text" class="form-control pack-input" id="packageLink" placeholder="">
   </div>
- </form> 
+ 
     <button type="submit" class="btn btn-dark pack-form-submit">Submit</button>
   </div>
+  </form> 
   
 </div> `;
   renderToDom("#packFormContainer", formString);
@@ -81,7 +82,6 @@ export const createPackage = (e) => {
   form.reset();
   packagesArr.push(newPackage);
   packagesOnDom(packagesArr);
-  packageFormOnDom();
 };
 
 export const deletePackage = (e) => {
@@ -90,17 +90,14 @@ export const deletePackage = (e) => {
     const index = packagesArr.findIndex(item => item.id === Number(btnId));
     const deletedPck = packagesArr.splice(index, 1);
     packagesOnDom(packagesArr); 
-    packageFormOnDom();
   }
 };
 
 export const searchPackage = (e) => {
-  console.log("isthisworking");
   const searchText = e.target.value.toLowerCase();
   const searchPckResult = packagesArr.filter (item => 
     item.name.toLowerCase().includes(searchText) ||
     item.description.toLowerCase().includes(searchText));
   packagesOnDom(searchPckResult);
-  packageFormOnDom();
 
 }

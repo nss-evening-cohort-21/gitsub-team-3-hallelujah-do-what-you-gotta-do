@@ -180,14 +180,19 @@ padding:5px;
 
 }
 
+.packages-heading {
+  margin: 15px;
+}
+
 .pack-input {
   /* margin: 4px; */
-  width: 800px;
+  width: 700px;
 }
 
 .form-intro {
   margin: 10px 15px 20px 0px;
 }
+
 
 .pack-form-submit {
   margin: 15px 5px 10px 5px;
