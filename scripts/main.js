@@ -14,7 +14,11 @@ import { deleteRepo } from "../functions-repo-page/deleteRepo.js";
 import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
 import { editRepo } from "../functions-repo-page/editRepo.js";
 import { deletePackage } from "../components/packageFormOnDom.js";
-import { overviewFormCardOnDom } from "../functions-repo-page/overviewFormCardOnDom.js";
+import { overviewFormCardOnDom } from "../functions-overview-page/overviewFormCardOnDom.js";
+import { pinnedSection } from "../functions-overview-page/overviewpinnedSection.js";
+import { formSection } from "../functions-overview-page/overviewformSection.js";
+
+
 import { repoCardSave } from "../functions-repo-page/repoCardSave.js";
 // Components
 import { navBarOnDom } from "../components/navBarOnDom.js";
@@ -45,56 +49,14 @@ const formContainer = document.querySelector("#formContainer");
 
 
 // navBar functions
-////////////////Graham//////////////////////////////////////
 
-
-const pinnedSection = () => {
-  let overviewCardString = "";
-
-  const reposPinned = reposArr.filter(word => word.pinned === true)
-
-  for (const member of reposPinned) {
-    overviewCardString += `<div class="card">
-    <div id="studentCardBody" class="card-body">
-      <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
-      <p class="card-text">${member.description}</p>
-      <p class="text-muted">${typeConstructor(member)}</p>
-      <div class="student-card-button-div">
-      <button class="pin-pin" id="unpinRepo--${member.id}">Unpin</button>
-      </div>
-    </div>
-  </div>
-  </div>
-   `
-  }
-  renderToDom("#cardContainer", overviewCardContainer);
-  renderToDom("#cardsPinned", overviewCardString);
-}
-const formSection = (arr) => {
-  let formString = "";
-  for (const member of arr) {
-    formString +=
-      `<div>
-    <div id="studentCardBody" class="card-body overview-card">
-      <h5 class="card-title" id="testing"><div id="voldName">${member.name}</div></h5>
-      <p class="card-text">${member.description}</p>
-      <p class="text-muted">${typeConstructor(member)}</p>
-      <div class="student-card-button-div">
-      <button class="pin-repo" id="pinRepo--${member.id}">Pin</button>
-      </div>
-    </div>
-  </div> `
-  }
-  renderToDom("#formContainer", overviewForm);
-  renderToDom("#cardsForPin", formString);
-}
-
+//OVERVIEW PAGE///
 const graham = () => {
-  formSection(reposArr);
+  formSection();
   pinnedSection();
 
 };
-//pinfunctions//
+//PIN FUNCTIONS///
 const pinRepoBtn = (e) => {
   if (e.target.id.includes('pinRepo--')) {
     const pinBtn = e.target
@@ -107,6 +69,7 @@ const pinRepoBtn = (e) => {
     graham();
   }
 }
+
 const unpinRepoBtn = (e) => {
   if (e.target.id.includes('unpinRepo--')) {
     const unpinBtn = e.target
@@ -119,23 +82,21 @@ const unpinRepoBtn = (e) => {
     graham();
   }
 }
-/////////////////////////////
-
+//OVERVIEW SEARCH BAR///
 const overviewSearch = (e) => {
-  e.preventDefault();
-  if (e.target.id === 'searchInput') {
-    const userInput = e.target.value.toLowerCase();
-    const searchResult = reposArr.filter(taco =>
-      taco.name.toLowerCase().includes(userInput) ||
-      taco.description.toLowerCase().includes(userInput) ||
-      taco.description.toLowerCase().includes(userInput));
-    console.log('this is the searchbar')
+e.preventDefault();
+if(e.target.id === 'searchInput'){
+  const userInput = e.target.value.toLowerCase();
+  const searchResult = reposArr.filter(taco =>
+    taco.name.toLowerCase().includes(userInput) ||
+    taco.description.toLowerCase().includes(userInput) ||
+    taco.description.toLowerCase().includes(userInput));
 
     overviewFormCardOnDom(searchResult);
-
   }
-
 }
+//END GRAHAM///
+  
 
 //////////////////////////////////////
 

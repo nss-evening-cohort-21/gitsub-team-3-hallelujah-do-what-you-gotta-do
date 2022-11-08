@@ -1,5 +1,5 @@
 import { renderToDom } from "../utils/renderToDom.js";
-import { typeConstructor } from "./typeConstructor.js";
+import { typeConstructor } from "../functions-repo-page/typeConstructor.js";
 
 export const overviewFormCardOnDom = (arr) => {
   let formCard = "";
