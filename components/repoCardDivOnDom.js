@@ -36,17 +36,17 @@ export const repoCardDivString = `
   </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="" id="repoCardSave">Save</button>
+      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" value="" id="repoCardSave">Save</button>
     </div>
   </div>
 </div>
 </div>
 </div>
-<div class="input-group mb-3">
+<div class="input-group mb-3 repo-page-input-top">
   <button class="btn btn-outline-secondary clear-repo-search" type="button" id="clearRepoSearch">Clear</button>
   <input type="text" class="form-control" placeholder="Search for Repositories..." aria-describedby="basic-addon1" id="repoSearch">
   <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="languageBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Language
     </button>
     <div class="dropdown-menu" aria-labelledby="languageBtn">
@@ -57,7 +57,7 @@ export const repoCardDivString = `
     </div>
   </div>
   <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="sortBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Sort
     </button>
     <div class="dropdown-menu" aria-labelledby="sortBtn">
