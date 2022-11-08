@@ -1,5 +1,3 @@
-
-
 .profile-div {
   width: 25%;
 }
@@ -48,8 +46,23 @@
 }
 
 .form-div-container {
-  /* height: 50%; */
   margin-bottom: 50px;
+  border-top: solid lightgray 1px;
+}
+
+.form-div-container>*,
+.card-div-container,
+.repo-page-input-top {
+  padding: 10px;
+}
+
+.form-div-container>h3 {
+  font-size: 23px;
+  margin: 0;
+}
+
+.repo-page-input-top {
+  border-bottom: solid lightgray 1px;
 }
 
 .card-div-container {
@@ -67,27 +80,73 @@
   pointer-events: none;
 }
 
+.js-icon {
+  color: #f1e05a;
+}
+
+.css-icon {
+  color: #563d7c;
+}
+
+.html-icon {
+  color: #e44b23;
+}
+
 /* Repo Page Styles ^^^^ elf */
+
 /*overview Style*/
 .scroll {
-  margin:2px;
-  padding: 4px;
   width: 800px;
-  height: 300px;
+  height: 350px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
-  border:solid black 2px;
+  border:solid white 1px;
 }
-.overview-card{
+
+.overview-card {
   margin-bottom: 10px;
-  border:solid grey 2px;
+  border:solid grey 1px;
+  border-radius:15px;
+  width:100%;
+  padding:5px;
 }
+
 .overview-sub-title{
   margin:5px;
+  
 }
 
-
+.overview-sub-title {
+  margin: 5px;
+}
+.overviewBtn{
+  background-color:white;
+  margin:5px;
+  border:solid grey 1px;
+  border-radius:5px;
+}
+.overviewBtn:hover{
+  background-color:grey;
+  color:white;
+}
+.overview-search{
+  border:solid grey 1px;
+  width:800px;
+  height:60px;
+  border-radius:15px;
+  margin-bottom: 4px;
+  padding:10px;
+}
+#overviewSearchDiv{
+border-radius:15px;
+}
+#pinned-card-style{
+padding:5px;
+  border-radius:15px;
+  border:solid grey 1px;
+  width:800px;
+}
 
 
 
@@ -115,8 +174,13 @@
 
 .package-form-card {
   /* padding: 10px; */
+<<<<<<< HEAD
   margin: 15px; 
   max-width: 1000px; 
+=======
+  margin: 10px;
+  max-width: 800px;
+>>>>>>> main
   height: auto;
 }
 
@@ -124,7 +188,7 @@
   margin: 4px;
 }
 
-.form-intro { 
+.form-intro {
   margin: 10px 15px 20px 0px;
 }
 
@@ -135,7 +199,7 @@
 .delete-package-div {
   display: flex;
   justify-content: space-between;
-  
+
 }
 
 .delete-package-btn {
@@ -157,3 +221,7 @@
 /* end packages css wbv  */
 
 /* Projects Page Styles -- AB */
+
+.projects-form-div-container, .form-group, .date-picker-container, #projectFormBtn, #projectsDivContainer {
+  padding: 10px;
+}
