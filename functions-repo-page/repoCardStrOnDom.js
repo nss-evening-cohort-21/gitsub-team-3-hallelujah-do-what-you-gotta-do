@@ -52,6 +52,3 @@ export const repoCardStrOnDom = (arr) => {
   }
   renderToDom("#repoPageCardDivContainer", cardString);
 }
-
-// row g-0
-// col-md-8

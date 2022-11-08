@@ -174,11 +174,11 @@ const repoSearch = (e) => {
 const repoPageCardFuncs = (e) => {
   clearRepoSearch(e);
   starRepoBtn(e);
-  filterLangs(e);
   sortRepoPage(e);
   deleteRepo(e);
   editRepo(e);
   repoCardSave(e);
+  filterLangs(e);
 }
 // elf --- Repo Page End
 
@@ -219,11 +219,11 @@ const addProject = (e) => {
 const searchProjects = (e) => {
   e.preventDefault();
   if (e.target.id === "projectSearch") {
-  const projSearchInput = e.target.value.toLowerCase();
-  const projSearchResultArr = projectsArr.filter(item =>
-    item.name.toLowerCase().includes(projSearchInput) ||
-    item.description.toLowerCase().includes(projSearchInput) ||
-    item.dateAdded.toLowerCase().includes(projSearchInput)
+    const projSearchInput = e.target.value.toLowerCase();
+    const projSearchResultArr = projectsArr.filter(item =>
+      item.name.toLowerCase().includes(projSearchInput) ||
+      item.description.toLowerCase().includes(projSearchInput) ||
+      item.dateAdded.toLowerCase().includes(projSearchInput)
     )
 
     projectSearchOnDom(projSearchResultArr);

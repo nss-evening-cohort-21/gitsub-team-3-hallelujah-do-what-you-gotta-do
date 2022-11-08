@@ -13,6 +13,5 @@ export const projectSearchOnDom = (searchArr) => {
         </div>
       </div>`
   }
-
   renderToDom("#projectsDivContainer", searchString);
 }
