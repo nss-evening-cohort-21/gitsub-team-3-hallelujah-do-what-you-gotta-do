@@ -211,3 +211,7 @@ padding:5px;
 /* end packages css wbv  */
 
 /* Projects Page Styles -- AB */
+
+.projects-form-div-container, .form-group, .date-picker-container, #projectFormBtn, #projectsDivContainer {
+  padding: 10px;
+}

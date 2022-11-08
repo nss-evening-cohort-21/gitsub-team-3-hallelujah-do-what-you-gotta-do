@@ -145,9 +145,9 @@ const repoPageCardFuncs = (e) => {
 
 // AB -- Projects Page 
 
-const projectsStringOnDom = () => {
+const projectsStringOnDom = (arr) => {
   let projectsString = ``;
-  for (const project of projectsArr) {
+  for (const project of arr) {
     projectsString += `
       <div class="card text-bg-light mb-3" style="max-width: 100%;">
         <div class="card-header">${project.dateAdded}</div>
@@ -172,7 +172,7 @@ const addProject = (e) => {
     dateAdded: document.querySelector("#dateAdded").value
   }
   projectsArr.push(newProject);
-  projectsStringOnDom();
+  projectsStringOnDom(projectsArr);
   renderToDom("#formContainer", projectsForm);
   projectsPageForm.reset();
 }
@@ -191,8 +191,28 @@ const searchProjects = (e) => {
   }
 }
 
+const sortProjects = (e) => {
+  if (e.target.id === "projectSortName") {
+    const sortedProjectNames = projectsArr.sort((a,b) => a.name.localeCompare(b.name));
+
+    projectsStringOnDom(sortedProjectNames);
+  }
+
+  if (e.target.id === "projectSortDateNew") {
+       const sortedProjectDates = projectsArr.sort((a,b) => Date.parse(b.dateAdded) - Date.parse(a.dateAdded));
+
+    projectsStringOnDom(sortedProjectDates);
+  }
+
+  if (e.target.id === "projectSortDateOld") {
+      const sortedProjectDates = projectsArr.sort((a,b) => Date.parse(a.dateAdded) - Date.parse(b.dateAdded));
+
+    projectsStringOnDom(sortedProjectDates);
+  }
+}
+
 const navProjects = () => {
-  projectsStringOnDom();
+  projectsStringOnDom(projectsArr);
   renderToDom("#formContainer", projectsForm);
 }
 
@@ -252,6 +272,8 @@ cardContainer.addEventListener('click', unpinRepoBtn)
 cardContainer.addEventListener('click', repoPageCardFuncs);
 formContainer.addEventListener('keyup', overviewSearch);
 cardContainer.addEventListener('keyup', searchProjects);
+cardContainer.addEventListener('click', sortProjects);
+
 
 
 const startApp = () => {
