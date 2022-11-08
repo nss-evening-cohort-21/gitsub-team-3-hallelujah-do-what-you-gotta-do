@@ -174,18 +174,25 @@ padding:5px;
 
 .package-form-card {
   /* padding: 10px; */
-  margin: 10px;
-  max-width: 800px;
+  margin: 15px; 
+  max-width: 1000px; 
   height: auto;
+
+}
+
+.packages-heading {
+  margin: 15px;
 }
 
 .pack-input {
-  margin: 4px;
+  /* margin: 4px; */
+  width: 700px;
 }
 
 .form-intro {
   margin: 10px 15px 20px 0px;
 }
+
 
 .pack-form-submit {
   margin: 15px 5px 10px 5px;
@@ -206,6 +213,11 @@ padding:5px;
 
 .packages-card:hover .delete-package-btn {
   display: inline-block;
+}
+
+.package-search {
+  width: 1000px;
+  margin: 15px;
 }
 
 /* end packages css wbv  */
