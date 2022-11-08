@@ -16,6 +16,6 @@ export const repoCardSave = (e) => {
     document.querySelector('#editCheckHtml').checked ?
       currentCard.type.html = true :
       currentCard.type.html = false
+    repoCardStrOnDom(reposArr);
   }
-  repoCardStrOnDom(reposArr);
 }
