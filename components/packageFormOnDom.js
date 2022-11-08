@@ -2,9 +2,13 @@ import { renderToDom } from "../utils/renderToDom.js";
 import { packagesArr } from "../data/arrays.js";
 
 
-export const packagesOnDom = () => {
-  let cardString = `<div class="package-search-container"><input id="packageSearch" class="package-search form-control form-control-lg" type="text" placeholder="Search"></div>`;
-  for (const member of packagesArr) {
+export const packagesPage = `<div class="package-search-container"><input id="packageSearch" class="package-search form-control form-control-lg" type="text" placeholder="Search"></div>
+<div class="package-card-container" id="packagesContainer"></div>
+<div class="package-form-container" id="packFormContainer"></div>`;
+
+export const packagesOnDom = (packObj) => {
+  let cardString = ``;
+  for (const member of packObj) {
     if (member.icon==="") {
       cardString += `<div class="card packages-card" style="width: 18rem;">
       <div class="card-body">
@@ -25,7 +29,7 @@ export const packagesOnDom = () => {
 
 
 
-  renderToDom("#cardContainer", `<div class="packages-container">`+cardString+`</div><div id="packFormContainer"></div>`);
+  renderToDom("#packagesContainer", `<div class="packages-container">`+cardString+`</div><div id="packFormContainer"></div>`);
 };
 
 
@@ -76,7 +80,7 @@ export const createPackage = (e) => {
   } else
   form.reset();
   packagesArr.push(newPackage);
-  packagesOnDom();
+  packagesOnDom(packagesArr);
   packageFormOnDom();
 };
 
@@ -85,7 +89,18 @@ export const deletePackage = (e) => {
     const [, btnId] = e.target.id.split('--');
     const index = packagesArr.findIndex(item => item.id === Number(btnId));
     const deletedPck = packagesArr.splice(index, 1);
-    packagesOnDom(); 
+    packagesOnDom(packagesArr); 
     packageFormOnDom();
   }
 };
+
+export const searchPackage = (e) => {
+  console.log("isthisworking");
+  const searchText = e.target.value.toLowerCase();
+  const searchPckResult = packagesArr.filter (item => 
+    item.name.toLowerCase().includes(searchText) ||
+    item.description.toLowerCase().includes(searchText));
+  packagesOnDom(searchPckResult);
+  packageFormOnDom();
+
+}
